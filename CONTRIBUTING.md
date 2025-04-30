@@ -26,3 +26,14 @@ git commit -m "Özellik eklendi: kullanıcı giriş ekranı"
 
 5-GitHub’a gönder:
 git push origin main
+
+
+## 🗃️ Veritabanını Yükleme / Importing the Database
+
+Proje klasöründeki `sql/healthylife.sql` dosyasını phpMyAdmin üzerinden içe aktararak veritabanını kullanıma hazır hale getirebilirsiniz.
+
+1. `http://localhost/phpmyadmin` adresine gidin.
+2. Yeni bir veritabanı oluşturun: **`healthylife`**
+3. Üst menüden **"İçe Aktar"** sekmesine tıklayın.
+4. `sql/healthylife.sql` dosyasını seçin.
+5. Sayfanın alt kısmındaki **Git** butonuna tıklayın.
