@@ -50,7 +50,7 @@ if (isset($_POST["admin"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giriş Formu</title>
-    <link rel="stylesheet" href="../assets/css/userLogin.css">
+    <link rel="stylesheet" href="/proje/assets/css/userLogin.css?v=<?= time(); ?>">
 </head>
 <body>
     <div class="container">

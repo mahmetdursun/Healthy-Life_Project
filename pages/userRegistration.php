@@ -22,7 +22,7 @@ if (isset($_POST["devam"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kayıt Ol - 1. Adım</title>
-    <link rel="stylesheet" href="../assets/css/userRegistration.css">
+    <link rel="stylesheet" href="/proje/assets/css/userRegistration.css?v=<?= time(); ?>">
 </head>
 <body>
     <div class="container">
