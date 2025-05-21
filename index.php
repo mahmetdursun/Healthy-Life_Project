@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -11,25 +15,38 @@
         <div class="logo">SağlıklıYaşam</div>
         <nav>
             <a href="#features">Özellikler</a>
-            <a href="pages/userLogin.php">Giriş Yap</a>
-            <a href="pages/userRegistration.php" class="btn">Kayıt Ol</a>
+
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <!-- Kullanıcı giriş yaptıysa -->
+                <a href="pages/profile.php">Profilim</a>
+                <a href="pages/logout.php" class="btn">Çıkış Yap</a>
+            <?php else: ?>
+                <!-- Giriş yapılmadıysa -->
+                <a href="pages/userLogin.php">Giriş Yap</a>
+                <a href="pages/userRegistration.php" class="btn">Kayıt Ol</a>
+            <?php endif; ?>
         </nav>
     </header>
 
     <section class="hero">
         <h1>Sağlıklı Yaşam Yolculuğuna Başla</h1>
         <p>Hedefine ulaşmak için bugün adım at. Senin için buradayız.</p>
-        <a href="pages/userRegistration.php" class="cta">Hemen Başla</a>
+
+        <?php if (!isset($_SESSION['user_id'])): ?>
+            <a href="pages/userRegistration.php" class="cta">Hemen Başla</a>
+        <?php else: ?>
+            <a href="pages/dashboard.php" class="cta">Kontrol Paneline Git</a>
+        <?php endif; ?>
     </section>
 
     <section class="features" id="features">
         <h2>Uygulama Özellikleri</h2>
         <div class="cards">
-            <div class="card">💊 İlaç Hatırlatıcı</div>
-            <div class="card">🏃 Egzersiz Planlayıcı</div>
-            <div class="card">🧘 Ruh Hali Takibi</div>
-            <div class="card">🍽️ Beslenme ve Kalori Hesaplama</div>
-            <div class="card">📊 Gelişim Raporları</div>
+            <div class="card"><a href="pages/ilachatirlatici.php">💊 İlaç Hatırlatıcı</a></div>
+            <div class="card"><a href="pages/egzersizplanlayici.php">🏃 Egzersiz Planlayıcı</a></div>
+            <div class="card"><a href="pages/ruhmulitakip.php">🧘 Ruh Hali Takibi</a></div>
+            <div class="card"><a href="pages/beslenme.php">🍽️ Beslenme ve Kalori Hesaplama</a></div>
+            <div class="card"><a href="pages/gelisimraporlari.php">📊 Gelişim Raporları</a></div>
         </div>
     </section>
 
