@@ -44,8 +44,8 @@ session_start();
         <div class="cards">
             <div class="card"><a href="pages/ilachatirlatici.php">💊 İlaç Hatırlatıcı</a></div>
             <div class="card"><a href="pages/egzersizplanlayici.php">🏃 Egzersiz Planlayıcı</a></div>
-            <div class="card"><a href="pages/ruhmulitakip.php">🧘 Ruh Hali Takibi</a></div>
-            <div class="card"><a href="pages/beslenme.php">🍽️ Beslenme ve Kalori Hesaplama</a></div>
+            <div class="card"><a href="pages/ruh_takibi.php">🧘 Ruh Hali Takibi</a></div>
+            <div class="card"><a href="pages/kullanici_beslenme.php">🍽️ Beslenme ve Kalori Hesaplama</a></div>
             <div class="card"><a href="pages/gelisimraporlari.php">📊 Gelişim Raporları</a></div>
         </div>
     </section>
