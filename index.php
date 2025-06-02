@@ -40,15 +40,22 @@ session_start();
     </section>
 
     <section class="features" id="features">
-        <h2>Uygulama Özellikleri</h2>
-        <div class="cards">
-            <div class="card"><a href="pages/ilachatirlatici.php">💊 İlaç Hatırlatıcı</a></div>
-            <div class="card"><a href="pages/egzersizplanlayici.php">🏃 Egzersiz Planlayıcı</a></div>
-            <div class="card"><a href="pages/ruh_takibi.php">🧘 Ruh Hali Takibi</a></div>
-            <div class="card"><a href="pages/kullanici_beslenme.php">🍽️ Beslenme ve Kalori Hesaplama</a></div>
-            <div class="card"><a href="pages/gelisimraporlari.php">📊 Gelişim Raporları</a></div>
-        </div>
-    </section>
+    <h2>Uygulama Özellikleri</h2>
+    <div class="cards">
+        <div class="card"><a href="pages/ilachatirlatici.php">💊 İlaç Hatırlatıcı</a></div>
+        <div class="card"><a href="pages/egzersizplanlayici.php">🏃 Egzersiz Planlayıcı</a></div>
+        <div class="card"><a href="pages/ruh_takibi.php">🧘 Ruh Hali Takibi</a></div>
+        <div class="card"><a href="pages/kullanici_beslenme.php">🍽️ Beslenme ve Kalori Hesaplama</a></div>
+        <div class="card"><a href="pages/gelisimraporlari.php">📊 Gelişim Raporları</a></div>
+        <div class="card"><a href="pages/motivasyon.php">💡 Günlük Motivasyon</a></div> <!-- EKLENEN KART -->
+        <div class="card"><a href="pages/saglik_bilgileri.php">⚕️ Sağlık Bilgileri</a></div>
+        <div class="card"><a href="pages/kisisel_hedefler.php">🎯 Kişisel Hedefler</a></div>
+        <div class="card"><a href="pages/diyetisyen_destek.php">👩‍⚕️ Diyetisyen Desteği</a></div>
+        <div class="card"><a href="pages/uykutakip.php">🛌 Uyku Takibi</a></div>
+
+    </div>
+</section>
+
 
     <footer>
         <p>&copy; 2025 SağlıklıYaşam Takip | Tüm hakları saklıdır.</p>

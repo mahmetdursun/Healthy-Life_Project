@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 22 May 2025, 11:47:41
+-- Üretim Zamanı: 02 Haz 2025, 18:13:08
 -- Sunucu sürümü: 10.4.32-MariaDB
 -- PHP Sürümü: 8.2.12
 
@@ -41,6 +41,36 @@ INSERT INTO `admin` (`a_id`, `a_adi`, `a_sifre`) VALUES
 (1, 'ahmet', '19053466'),
 (2, 'sude', '0987654321'),
 (3, 'esma', '1234567890');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `diyetisyen_formlari`
+--
+
+CREATE TABLE `diyetisyen_formlari` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `adsoyad` varchar(100) NOT NULL,
+  `yas` int(11) NOT NULL,
+  `boy` int(11) NOT NULL,
+  `kilo` int(11) NOT NULL,
+  `hedef_kilo` int(11) DEFAULT NULL,
+  `ogun` text DEFAULT NULL,
+  `tercih` enum('Standart','Vegan','Vejetaryen','Glütensiz','Ketojenik') DEFAULT 'Standart',
+  `alerji` varchar(255) DEFAULT NULL,
+  `gecmis_diyet` text DEFAULT NULL,
+  `rapor` varchar(255) DEFAULT NULL,
+  `mesaj` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Tablo döküm verisi `diyetisyen_formlari`
+--
+
+INSERT INTO `diyetisyen_formlari` (`id`, `user_id`, `adsoyad`, `yas`, `boy`, `kilo`, `hedef_kilo`, `ogun`, `tercih`, `alerji`, `gecmis_diyet`, `rapor`, `mesaj`, `created_at`) VALUES
+(1, NULL, 'FGSG', 3, 4, 4, 3, 'gfdggdfg', 'Standart', 'gdfd', 'gdgdgd', NULL, 'gddggd', '2025-06-02 11:40:42');
 
 -- --------------------------------------------------------
 
@@ -87,7 +117,37 @@ CREATE TABLE `ilaclar` (
 
 INSERT INTO `ilaclar` (`id`, `user_id`, `ilac_ismi`, `ilac_saati`) VALUES
 (1, 1, 'parol', '12:00:00'),
-(2, 1, 'parol', '12:30:00');
+(2, 1, 'parol', '12:30:00'),
+(3, 6, 'esma', '19:45:00');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `kisisel_hedefler`
+--
+
+CREATE TABLE `kisisel_hedefler` (
+  `id` int(11) NOT NULL,
+  `u_id` int(11) NOT NULL,
+  `su_hedef` decimal(4,1) DEFAULT NULL,
+  `uyku_hedef` decimal(4,1) DEFAULT NULL,
+  `adim_hedef` int(11) DEFAULT NULL,
+  `sabah_rutin` varchar(255) DEFAULT NULL,
+  `aksam_rutin` varchar(255) DEFAULT NULL,
+  `gunluk_motivasyon` text DEFAULT NULL,
+  `yeni_aliskanlik` varchar(255) DEFAULT NULL,
+  `stres_strateji` text DEFAULT NULL,
+  `minnettarlik` text DEFAULT NULL,
+  `ruh_hali` varchar(50) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Tablo döküm verisi `kisisel_hedefler`
+--
+
+INSERT INTO `kisisel_hedefler` (`id`, `u_id`, `su_hedef`, `uyku_hedef`, `adim_hedef`, `sabah_rutin`, `aksam_rutin`, `gunluk_motivasyon`, `yeni_aliskanlik`, `stres_strateji`, `minnettarlik`, `ruh_hali`, `created_at`) VALUES
+(1, 6, -0.2, 0.2, -3, 'nvn', 'nvv', 'nbn', 'vnvn', 'nvnv', 'bnvb', 'Mutlu', '2025-06-02 12:22:13');
 
 -- --------------------------------------------------------
 
@@ -165,6 +225,70 @@ INSERT INTO `kullanici_ruh_hali` (`id`, `user_id`, `ruh_hali`, `tarih`, `yorum`,
 -- --------------------------------------------------------
 
 --
+-- Tablo için tablo yapısı `motivasyon`
+--
+
+CREATE TABLE `motivasyon` (
+  `id` int(11) NOT NULL,
+  `tur` enum('mesaj','oneri') NOT NULL,
+  `icerik` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Tablo döküm verisi `motivasyon`
+--
+
+INSERT INTO `motivasyon` (`id`, `tur`, `icerik`) VALUES
+(1, 'mesaj', 'Bugün bir adım atmak, yarın için dev bir adımdır.'),
+(2, 'mesaj', 'Sağlığın kıymetini kaybetmeden bil!'),
+(3, 'mesaj', 'Küçük değişimler, büyük sonuçlar doğurur.'),
+(4, 'mesaj', 'Kendine iyi bak, çünkü sen özelsin.'),
+(5, 'mesaj', 'Zihinsel sağlık, beden sağlığıyla başlar.'),
+(6, 'mesaj', 'Başlamak için harika bir gün!'),
+(7, 'mesaj', 'Unutma, sağlıklı yaşam bir yolculuktur, yarış değil.'),
+(8, 'oneri', 'Bugün 2 litre su içmeyi hedefle!'),
+(9, 'oneri', '10 dakikalık kısa bir yürüyüş yap.'),
+(10, 'oneri', 'Şekerli içecek yerine limonlu su dene.'),
+(11, 'oneri', 'Bir meditasyon müziği açıp rahatla.'),
+(12, 'oneri', 'Ekran süreni bugün 30 dk azaltmaya çalış.');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `saglik_bilgileri`
+--
+
+CREATE TABLE `saglik_bilgileri` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `ad_soyad` varchar(100) DEFAULT NULL,
+  `yas` int(11) DEFAULT NULL,
+  `boy` int(11) DEFAULT NULL,
+  `kilo` int(11) DEFAULT NULL,
+  `kan_grubu` varchar(5) DEFAULT NULL,
+  `alerjiler` text DEFAULT NULL,
+  `hastaliklar` text DEFAULT NULL,
+  `su` float DEFAULT NULL,
+  `uyku` float DEFAULT NULL,
+  `sigara` varchar(10) DEFAULT NULL,
+  `ilaclar` text DEFAULT NULL,
+  `stres` int(11) DEFAULT NULL,
+  `adet_duzeni` varchar(50) DEFAULT NULL,
+  `aile_hastalik` text DEFAULT NULL,
+  `spor` varchar(10) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Tablo döküm verisi `saglik_bilgileri`
+--
+
+INSERT INTO `saglik_bilgileri` (`id`, `user_id`, `ad_soyad`, `yas`, `boy`, `kilo`, `kan_grubu`, `alerjiler`, `hastaliklar`, `su`, `uyku`, `sigara`, `ilaclar`, `stres`, `adet_duzeni`, `aile_hastalik`, `spor`, `created_at`) VALUES
+(1, 5, 'esma ', 20, 150, 50, 'A+', 'saman', 'Diyabet', 2, 8, 'Hayır', 'gjgjjb', 5, 'düzenli', 'hıgb', 'Evet', '2025-05-30 10:50:59');
+
+-- --------------------------------------------------------
+
+--
 -- Tablo için tablo yapısı `user`
 --
 
@@ -193,7 +317,32 @@ INSERT INTO `user` (`u_id`, `u_adi`, `u_soyadi`, `u_tc`, `u_telefon`, `u_mail`, 
 (1, 'fatma', 'makarna', '44842304665', '5454030466', 'fatma3434@gmail.com', '1980-01-25', 80, 160, 200, 'kadın', 'orta', 'kilo_vermek', '25f9e794323b453885f5181f1b624d0b'),
 (2, 'asas', 'asas', '44444444444', '5456456666', 'asddassd@gmail.com', '2025-04-12', 66, 170, 120, 'erkek', 'hafif', 'kilo_vermek', '25f9e794323b453885f5181f1b624d0b'),
 (3, 'sudenaz', 'balıkçı', '15113402276', '05444305717', 'sudenazbalikcii58@gmail.com', '2005-01-14', 42, 160, 10, 'kadın', 'hafif', 'kilo_almak', '31afd7d02bcfcb3827da7b59d9ce20e0'),
-(4, 'sudenaz', 'balıkçı', '15113402276', '05444305717', 'sudenazbalikcii58@gmail.com', '2005-01-14', 42, 160, 30, 'kadın', 'hafif', 'kilo_almak', '31afd7d02bcfcb3827da7b59d9ce20e0');
+(4, 'sudenaz', 'balıkçı', '15113402276', '05444305717', 'sudenazbalikcii58@gmail.com', '2005-01-14', 42, 160, 30, 'kadın', 'hafif', 'kilo_almak', '31afd7d02bcfcb3827da7b59d9ce20e0'),
+(5, 'Esma', 'Çekiç', '10418666421', '02167485657', 'esceko@gmail.com', '2025-05-10', 50, 150, 15, 'kadın', 'hafif', 'kilo_korumak', 'ebba20e9d1f72a37245b1cbfed20b9c5'),
+(6, 'esra', 'na', '10418666424', '05352675659', 'escekor@gmail.com', '2025-06-20', 2, 2, 2, 'erkek', 'orta', 'kilo_vermek', 'e0580b7a065e6ab38a100991d6fa84fe');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `uyku_kayitlari`
+--
+
+CREATE TABLE `uyku_kayitlari` (
+  `id` int(11) NOT NULL,
+  `kullanici_id` int(11) NOT NULL,
+  `tarih` date NOT NULL,
+  `uyuma_saati` time NOT NULL,
+  `uyanma_saati` time NOT NULL,
+  `notlar` text DEFAULT NULL,
+  `eklenme_zamani` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Tablo döküm verisi `uyku_kayitlari`
+--
+
+INSERT INTO `uyku_kayitlari` (`id`, `kullanici_id`, `tarih`, `uyuma_saati`, `uyanma_saati`, `notlar`, `eklenme_zamani`) VALUES
+(1, 6, '2025-06-13', '18:34:00', '20:35:00', 'bddb', '2025-06-02 12:35:11');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -206,6 +355,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`a_id`);
 
 --
+-- Tablo için indeksler `diyetisyen_formlari`
+--
+ALTER TABLE `diyetisyen_formlari`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Tablo için indeksler `egzersizler`
 --
 ALTER TABLE `egzersizler`
@@ -216,6 +371,13 @@ ALTER TABLE `egzersizler`
 --
 ALTER TABLE `ilaclar`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Tablo için indeksler `kisisel_hedefler`
+--
+ALTER TABLE `kisisel_hedefler`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `u_id` (`u_id`);
 
 --
 -- Tablo için indeksler `kullanicilar`
@@ -238,10 +400,29 @@ ALTER TABLE `kullanici_ruh_hali`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Tablo için indeksler `motivasyon`
+--
+ALTER TABLE `motivasyon`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Tablo için indeksler `saglik_bilgileri`
+--
+ALTER TABLE `saglik_bilgileri`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Tablo için indeksler `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`u_id`);
+
+--
+-- Tablo için indeksler `uyku_kayitlari`
+--
+ALTER TABLE `uyku_kayitlari`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `kullanici_id` (`kullanici_id`);
 
 --
 -- Dökümü yapılmış tablolar için AUTO_INCREMENT değeri
@@ -254,6 +435,12 @@ ALTER TABLE `admin`
   MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- Tablo için AUTO_INCREMENT değeri `diyetisyen_formlari`
+--
+ALTER TABLE `diyetisyen_formlari`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- Tablo için AUTO_INCREMENT değeri `egzersizler`
 --
 ALTER TABLE `egzersizler`
@@ -263,7 +450,13 @@ ALTER TABLE `egzersizler`
 -- Tablo için AUTO_INCREMENT değeri `ilaclar`
 --
 ALTER TABLE `ilaclar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `kisisel_hedefler`
+--
+ALTER TABLE `kisisel_hedefler`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `kullanicilar`
@@ -284,10 +477,44 @@ ALTER TABLE `kullanici_ruh_hali`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- Tablo için AUTO_INCREMENT değeri `motivasyon`
+--
+ALTER TABLE `motivasyon`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `saglik_bilgileri`
+--
+ALTER TABLE `saglik_bilgileri`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- Tablo için AUTO_INCREMENT değeri `user`
 --
 ALTER TABLE `user`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `uyku_kayitlari`
+--
+ALTER TABLE `uyku_kayitlari`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Dökümü yapılmış tablolar için kısıtlamalar
+--
+
+--
+-- Tablo kısıtlamaları `kisisel_hedefler`
+--
+ALTER TABLE `kisisel_hedefler`
+  ADD CONSTRAINT `kisisel_hedefler_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`) ON DELETE CASCADE;
+
+--
+-- Tablo kısıtlamaları `uyku_kayitlari`
+--
+ALTER TABLE `uyku_kayitlari`
+  ADD CONSTRAINT `uyku_kayitlari_ibfk_1` FOREIGN KEY (`kullanici_id`) REFERENCES `user` (`u_id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
