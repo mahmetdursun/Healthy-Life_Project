@@ -96,7 +96,7 @@ if ($antrenman_suresi < 30) {
         <p><?php echo $hedef_mesaj; ?></p>
         <p><?php echo $antrenman_mesaj; ?></p>
 
-        <a href="userLogin.php" class="button">Ana Sayfaya Dön</a>
+        <a href="/proje/index.php" class="button">Ana Sayfaya Dön</a>
     </div>
 </body>
 </html>

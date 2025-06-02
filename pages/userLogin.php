@@ -16,7 +16,7 @@ if (isset($_POST["giris"])) {
     if ($result = $query->fetch()) {
         $_SESSION["user_id"] = $result["u_id"];
         $_SESSION["u_adi"] = $result["u_adi"];
-        header("Location: paketler.php"); 
+        header("Location: /proje/index.php");
         exit;
     } else {
         echo "<script>alert('Giriş bilgileri hatalı.');</script>";
@@ -70,7 +70,6 @@ if (isset($_POST["admin"])) {
 
                     <button type="submit" name="giris">Giriş Yap</button>
                 </form>
-                <a href="userRegistration.php" class="register-button">Kayıt Ol</a>
             </div>
 
             <!-- Admin Giriş Formu -->
