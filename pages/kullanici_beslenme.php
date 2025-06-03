@@ -241,7 +241,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="section">
       <h2>Öğün Seçimi & Yemekler</h2>
       <label for="ogun">Öğün</label>
-      <select name="ogun" id="ogun" required>
+      <select name="ogun" id="ogun" required onchange="this.form.submit()">
         <option value="">Seçiniz...</option>
         <?php foreach ($ogunler as $o): ?>
           <option value="<?=htmlspecialchars($o)?>" <?= (($_POST['ogun'] ?? '') === $o) ? 'selected' : '' ?>><?=htmlspecialchars($o)?></option>
