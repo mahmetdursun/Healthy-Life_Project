@@ -1,0 +1,31 @@
+ body {
+            font-family: Arial;
+            margin: 30px;
+            background: #f8f9fa;
+            color: #333;
+        }
+        h2 {
+            margin-top: 40px;
+            color: #2c3e50;
+        }
+        .block {
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        .ilac, .egz, .ruh, .uyku {
+            margin: 10px 0;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn.red {
+            background-color: #dc3545;
+        }

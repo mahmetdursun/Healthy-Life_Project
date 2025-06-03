@@ -1,3 +1,14 @@
+<?php
+session_start();
+require_once('../includes/connection.php');
+
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['error_message'] = 'Bu sayfaya erişmek için lütfen giriş yapınız.';
+    header('Location: userLogin.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -77,6 +88,7 @@
 
             <button type="submit">Formu Gönder</button>
         </form>
+        <a href="../index.php">Ana Sayfaya Dön</a>
     </div>
 </body>
 </html>

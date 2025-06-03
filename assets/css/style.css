@@ -22,7 +22,28 @@ body {
     margin-left: 20px;
     color: white;
     text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
 }
+
+.navbar nav a:hover {
+    color: #000000;
+}
+
+.navbar nav a.profile-link {
+    font-weight: bold;
+    background-color: white;
+    color: #4CAF50;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid #4CAF50;
+}
+
+.navbar nav a.profile-link:hover {
+    background-color: #eeeeee;
+    color: rgb(0, 0, 0);
+}
+
 
 .navbar .btn {
     background: white;
@@ -33,19 +54,64 @@ body {
 }
 
 .hero {
-    text-align: center;
-    padding: 100px 20px;
-    background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+    background-image: url('../images/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 180px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
-.hero h1 {
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(10, 10, 10, 0.4); /* arka plan koyuluğu */
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.hero-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.hero-text h1 {
     font-size: 36px;
     margin-bottom: 10px;
+    color: #ffffff;
 }
 
-.hero p {
+.hero-text p {
     font-size: 18px;
     margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.hero-image {
+    flex: 1;
+    text-align: center;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .cta {
@@ -66,18 +132,57 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
     margin-top: 30px;
 }
 
 .card {
     background: white;
-    padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    width: 220px;
-    font-size: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 280px;
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.3s ease;
 }
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card h3 {
+    font-size: 20px;
+    margin: 15px 0 10px;
+    color: #333;
+}
+
+.card p {
+    padding: 0 15px;
+    font-size: 15px;
+    color: #666;
+}
+
+.card a {
+    display: inline-block;
+    margin: 15px 0 20px;
+    padding: 8px 16px;
+    background: #4CAF50;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.card a:hover {
+    background: #388e3c;
+}
+
 
 footer {
     background: #4CAF50;

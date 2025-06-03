@@ -2,6 +2,12 @@
 session_start();
 include __DIR__ . '/../includes/connection.php';
 
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['error_message'] = 'Bu sayfaya erişmek için lütfen giriş yapınız.';
+    header('Location: userLogin.php');
+    exit;
+}
+
 if (!isset($connection)) {
     die("Veritabanı bağlantısı sağlanamadı!");
 }
@@ -218,126 +224,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Beslenme Takip Formu</title>
-<style>
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-    color: #333;
-    margin: 0;
-    padding: 0;
-  }
-  .container {
-    max-width: 980px;
-    background: white;
-    margin: 40px auto;
-    padding: 30px 40px;
-    border-radius: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  }
-  h1 {
-    text-align: center;
-    color: #4a90e2;
-    margin-bottom: 25px;
-    font-weight: 700;
-    letter-spacing: 1.2px;
-  }
-  form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-  }
-  .section {
-    flex: 1 1 320px;
-    background: #e9efff;
-    border-radius: 20px;
-    padding: 20px 25px;
-    box-shadow: inset 2px 2px 5px #d0d8ff, inset -2px -2px 5px #ffffff;
-  }
-  .section h2 {
-    text-align: center;
-    color: #2c3e50;
-    margin-bottom: 18px;
-    font-size: 1.4rem;
-  }
-  label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    cursor: pointer;
-  }
-  select, input[type="number"], input[type="text"] {
-    width: 100%;
-    padding: 8px 12px;
-    margin-bottom: 15px;
-    border-radius: 15px;
-    border: 1px solid #aac6ff;
-    font-size: 1rem;
-    box-shadow: inset 1px 1px 3px #cce0ff;
-    transition: border-color 0.3s ease;
-  }
-  select:focus, input[type="number"]:focus, input[type="text"]:focus {
-    border-color: #3a6de0;
-    outline: none;
-    box-shadow: 0 0 8px #6b95f7;
-  }
-  .items-list {
-    max-height: 200px;
-    overflow-y: auto;
-    margin-bottom: 10px;
-  }
-  .items-list label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #f0f4ff;
-    margin-bottom: 8px;
-    padding: 6px 10px;
-    border-radius: 12px;
-    box-shadow: 2px 2px 6px #c0c9ff;
-  }
-  .items-list label input[type="checkbox"] {
-    margin-right: 10px;
-  }
-  .items-list label input[type="number"] {
-    width: 70px;
-    margin-left: 15px;
-    font-size: 0.9rem;
-    border-radius: 10px;
-  }
-  button {
-    background: #4a90e2;
-    border: none;
-    padding: 15px 25px;
-    border-radius: 30px;
-    color: white;
-    font-size: 1.2rem;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 8px 15px rgba(74,144,226,0.4);
-    transition: background-color 0.3s ease;
-    width: 100%;
-    margin-top: 15px;
-  }
-  button:hover {
-    background: #3577d4;
-  }
-  .message {
-    text-align: center;
-    margin-top: 25px;
-    font-weight: 600;
-    font-size: 1.2rem;
-    color: #2d572c;
-    padding: 12px;
-    border-radius: 15px;
-    background: #d1e7dd;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  }
-  .error {
-    background: #f8d7da;
-    color: #842029;
-  }
-</style>
+<link rel="stylesheet" href="../assets/css/kullanici_beslenme.css?v=<?= time(); ?>">
 </head>
 <body>
 
@@ -424,22 +311,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <button type="submit">Beslenmeyi Kaydet</button>
+    <a href="../index.php">Ana Sayfaya Dön</a>
   </form>
 </div>
-
-<script>
-  // Öğün seçimine göre yemek listesi göster/gizle
-  document.getElementById('ogun').addEventListener('change', function(){
-    const secilen = this.value;
-    document.querySelectorAll('.items-list').forEach(div => {
-      if(div.previousElementSibling && div.previousElementSibling.textContent.includes(secilen)) {
-        div.style.display = 'block';
-      } else if(div.previousElementSibling && (div.previousElementSibling.textContent.includes('Sabah Yemekleri') || div.previousElementSibling.textContent.includes('Öğle Yemekleri') || div.previousElementSibling.textContent.includes('Akşam Yemekleri'))) {
-        div.style.display = 'none';
-      }
-    });
-  });
-</script>
-
 </body>
 </html>

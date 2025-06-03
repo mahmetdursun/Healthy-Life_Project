@@ -4,6 +4,12 @@ session_start();
 // connection.php dosyasını dahil et
 include __DIR__ . '/../includes/connection.php';
 
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['error_message'] = 'Bu sayfaya erişmek için lütfen giriş yapınız.';
+    header('Location: userLogin.php');
+    exit;
+}
+
 // Bağlantı kontrolü
 if (!isset($connection)) {
     die("Veritabanı bağlantısı sağlanamadı!");
@@ -40,113 +46,7 @@ $ilaclar = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>İlaç Hatırlatıcı</title>
-    <style>
-        /* Temel ayarlar */
-        * {
-            box-sizing: border-box;
-        }
-        body, html {
-            height: 100%;
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: #f9f9f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .container {
-            background-color: white;
-            max-width: 450px;
-            width: 100%;
-            border-radius: 12px;
-            padding: 30px 40px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        h1 {
-            color: #4CAF50;
-            margin-bottom: 25px;
-            font-size: 28px;
-        }
-        form label {
-            display: block;
-            text-align: left;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 6px;
-            margin-top: 15px;
-        }
-        form input[type="text"],
-        form input[type="time"] {
-            width: 100%;
-            padding: 10px 12px;
-            font-size: 16px;
-            border: 1.5px solid #ccc;
-            border-radius: 8px;
-            transition: border-color 0.3s ease;
-        }
-        form input[type="text"]:focus,
-        form input[type="time"]:focus {
-            outline: none;
-            border-color: #4CAF50;
-        }
-        button {
-            margin-top: 25px;
-            width: 100%;
-            background-color: #4CAF50;
-            color: white;
-            font-size: 16px;
-            padding: 12px 0;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        h2 {
-            margin-top: 40px;
-            margin-bottom: 15px;
-            color: #333;
-            text-align: left;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-        thead {
-            background-color: #4CAF50;
-            color: white;
-        }
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-        }
-        tbody tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        p {
-            color: #666;
-            margin-top: 15px;
-            text-align: left;
-        }
-        a {
-            display: inline-block;
-            margin-top: 30px;
-            color: #4CAF50;
-            font-weight: 600;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        a:hover {
-            color: #388e3c;
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/css/ilachatirlatici.css?v=<?= time(); ?>">
 </head>
 <body>
     <div class="container">

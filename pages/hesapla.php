@@ -70,6 +70,13 @@ if ($hedef == 'kilo_vermek') {
     $hedef_mesaj = "Kilonu korumak için günlük yaklaşık $hedef_kalori kcal almalısın.";
 }
 
+// Günlük kalori ihtiyacını veritabanına kaydet
+$update = $connection->prepare("UPDATE user SET gunluk_kalori = :kalori WHERE u_id = :id");
+$update->execute([
+    ':kalori' => $hedef_kalori,
+    ':id' => $user['u_id']
+]);
+
 // Antrenman süresine göre öneri
 if ($antrenman_suresi < 30) {
     $antrenman_mesaj = "Antrenman süren az. Günlük en az 30 dakika egzersiz öneriyoruz.";

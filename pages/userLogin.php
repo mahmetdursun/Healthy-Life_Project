@@ -2,6 +2,30 @@
 session_start();
 require_once('../includes/connection.php');
 
+if (isset($_SESSION['error_message'])):
+?>
+    <div style="
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #f44336;
+        color: white;
+        padding: 15px 25px;
+        border-radius: 5px;
+        font-family: sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        z-index: 9999;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        text-align: center;
+    ">
+        ⚠️ <?= $_SESSION['error_message']; ?>
+    </div>
+<?php
+unset($_SESSION['error_message']);
+endif;
+
 // Kullanıcı Giriş
 if (isset($_POST["giris"])) {
     $mail = $_POST["mail"];

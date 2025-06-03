@@ -2,6 +2,12 @@
 session_start();
 require_once '../includes/connection.php';
 
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['error_message'] = 'Bu sayfaya erişmek için lütfen giriş yapınız.';
+    header('Location: userLogin.php');
+    exit;
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
     $su_hedef = $_POST['su_hedef'];
@@ -113,6 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['user_id'])) {
 
         <div class="full-width">
             <button type="submit">Kaydet</button>
+            <a href="../index.php">Ana Sayfaya Dön</a>
         </div>
     </form>
 </div>

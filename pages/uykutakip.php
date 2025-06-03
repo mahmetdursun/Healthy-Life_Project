@@ -1,9 +1,11 @@
 <?php
 session_start();
-require_once '../includes/connection.php';
+require_once('../includes/connection.php');
 
 if (!isset($_SESSION['user_id'])) {
-    die("Lütfen giriş yapın.");
+    $_SESSION['error_message'] = 'Bu sayfaya erişmek için lütfen giriş yapınız.';
+    header('Location: userLogin.php');
+    exit;
 }
 
 $kullanici_id = $_SESSION['user_id'];
@@ -60,6 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <textarea id="sleep_quality" name="sleep_quality" rows="4" placeholder="Örneğin: 7 saat uyudum, derin uyudum, uyanmak zor oldu..."></textarea>
 
       <button type="submit">💾 Kaydet</button>
+      <a href="../index.php">Ana Sayfaya Dön</a>
     </form>
   </div>
 
