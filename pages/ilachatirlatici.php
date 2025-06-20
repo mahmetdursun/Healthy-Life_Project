@@ -86,6 +86,7 @@ $ilaclar = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endif; ?>
 
         <a href="../index.php">Ana Sayfaya Dön</a>
+        <a href="tarifler.php">deneme</a>
     </div>
 </body>
 </html>

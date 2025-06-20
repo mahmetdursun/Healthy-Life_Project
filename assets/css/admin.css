@@ -1,0 +1,198 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.admin-container {
+    display: flex;
+}
+
+.sidebar {
+    width: 220px;
+    background: #1f2937;
+    color: white;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+.sidebar h2 {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin: 1rem 0;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar a.active, .sidebar a:hover {
+    color: #60a5fa;
+}
+
+.main-panel {
+  flex-grow: 1;
+  padding: 1.5rem;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+
+.topbar select, .topbar input[type="date"] {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.topbar-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.topbar-icons .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+.user-card {
+    background-color: #1f2937; /* Koyu gri (uygun zemin) */
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    color: #e5e7eb;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.user-card:hover {
+    transform: translateY(-3px);
+    background-color: #273449;
+}
+
+.user-card img {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #64748b;
+}
+
+.user-info h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.user-info p {
+    margin: 3px 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #cbd5e1;
+}
+
+.user-info p strong {
+    color: #facc15; /* sarıya çalan vurgu (tailwind warning rengi) */
+}
+
+
+.form-add {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  background: #f9fafb;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.form-add label {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  display: block;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.form-add .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-add input,
+.form-add select,
+.form-add textarea {
+  padding: 10px 14px;
+  border: 2px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: white;
+  transition: 0.3s;
+}
+
+.form-add input:focus,
+.form-add select:focus,
+.form-add textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background: #eff6ff;
+}
+
+.form-add button {
+  grid-column: span 2;
+  padding: 12px 18px;
+  border: none;
+  background: #3b82f6;
+  color: white;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.form-add button:hover {
+  background: #2563eb;
+}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 03 Haz 2025, 18:37:27
+-- Üretim Zamanı: 20 Haz 2025, 13:21:52
 -- Sunucu sürümü: 10.4.32-MariaDB
 -- PHP Sürümü: 8.0.30
 
@@ -41,6 +41,43 @@ INSERT INTO `admin` (`a_id`, `a_adi`, `a_sifre`) VALUES
 (1, 'ahmet', '19053466'),
 (2, 'sude', '0987654321'),
 (3, 'esma', '1234567890');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `calisanlar`
+--
+
+CREATE TABLE `calisanlar` (
+  `c_id` int(11) NOT NULL,
+  `u_id` int(11) DEFAULT NULL,
+  `c_adi` varchar(100) NOT NULL,
+  `c_soyadi` varchar(100) NOT NULL,
+  `c_mail` varchar(150) NOT NULL,
+  `c_sifre` varchar(255) NOT NULL,
+  `tur` enum('diyetisyen','spor_egitmeni','doktor','hayat_kocu') NOT NULL,
+  `uzmanlik` text DEFAULT NULL,
+  `calisma_saatleri` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Tablo döküm verisi `calisanlar`
+--
+
+INSERT INTO `calisanlar` (`c_id`, `u_id`, `c_adi`, `c_soyadi`, `c_mail`, `c_sifre`, `tur`, `uzmanlik`, `calisma_saatleri`) VALUES
+(1, 1, 'Elif', 'Yılmaz', 'elifyilmaz@example.com', '1234', 'diyetisyen', 'Obezite ve kilo kontrolü', 'Hafta içi 09:00-17:00'),
+(2, 2, 'Mehmet', 'Kara', 'mehmetkara@example.com', 'abcd', 'diyetisyen', 'Sporcu beslenmesi', 'Hafta içi 10:00-18:00'),
+(3, 3, 'Zeynep', 'Demir', 'zeynepdemir@example.com', '4321', 'diyetisyen', 'Vejetaryen ve vegan beslenme', 'Pazartesi-Perşembe 08:00-16:00'),
+(4, 4, 'Ali', 'Toprak', 'alitoprak@example.com', 'fitness1', 'spor_egitmeni', 'Fonksiyonel antrenman', 'Hafta içi 12:00-20:00'),
+(5, 5, 'Seda', 'Aslan', 'sedaslan@example.com', 'gymgirl', 'spor_egitmeni', 'Kadınlara özel egzersiz programları', 'Hafta sonu 10:00-18:00'),
+(6, 6, 'Emre', 'Koç', 'emrekoc@example.com', 'emre123', 'spor_egitmeni', 'Vücut geliştirme', 'Hafta içi 09:00-17:00'),
+(7, 7, 'Ayşe', 'Şahin', 'aysesahin@example.com', 'doktor1', 'doktor', 'İç hastalıkları (dahiliye)', 'Hafta içi 08:30-16:30'),
+(8, 8, 'Burak', 'Er', 'buraker@example.com', 'drburak', 'doktor', 'Aile hekimliği', 'Pazartesi-Cuma 09:00-15:00'),
+(9, 9, 'Naz', 'Yıldız', 'nazyildiz@example.com', 'yildiz123', 'doktor', 'Endokrinoloji', 'Hafta içi 10:00-18:00'),
+(10, 10, 'Murat', 'Güven', 'muratguven@example.com', 'coaching1', 'hayat_kocu', 'Motivasyon ve hedef belirleme', 'Her gün 11:00-19:00'),
+(11, 11, 'Esra', 'Balcı', 'esrabalci@example.com', 'hayat321', 'hayat_kocu', 'Stres yönetimi', 'Hafta içi 13:00-20:00'),
+(12, 12, 'Selin', 'Aydın', 'selinaydin@example.com', 'selin123', 'hayat_kocu', 'Öz farkındalık geliştirme', 'Salı-Cuma 09:30-17:30'),
+(17, NULL, 'Mehmet', 'Varol', 'mehmetvar@gmail.com', '1234', 'diyetisyen', 'Obezite', 'Pazartesi-Cuma 09:00-15:00');
 
 -- --------------------------------------------------------
 
@@ -253,7 +290,48 @@ INSERT INTO `kullanici_beslenme` (`id`, `user_id`, `ogun`, `yemek`, `miktar`, `k
 (43, 13, 'İçecek', 'Taze Sıkılmış Portakal Suyu', 200, 20, 2, 0.4, 90, '2025-06-03', '2025-06-03 12:15:16'),
 (44, 13, 'Öğle', 'Izgara Tavuk', 100, 0, 31, 3.6, 165, '2025-06-03', '2025-06-03 12:16:05'),
 (45, 13, 'Atıştırmalık', 'Badem', 30, 6.6, 6.3, 14.7, 172.5, '2025-06-03', '2025-06-03 12:16:05'),
-(46, 13, 'İçecek', 'Su', 200, 0, 0, 0, 0, '2025-06-03', '2025-06-03 12:16:05');
+(46, 13, 'İçecek', 'Su', 200, 0, 0, 0, 0, '2025-06-03', '2025-06-03 12:16:05'),
+(47, 13, 'Akşam', 'Balık', 100, 0, 22, 12, 210, '2025-06-09', '2025-06-08 21:54:14'),
+(48, 13, 'Atıştırmalık', 'Ceviz', 30, 4.2, 4.5, 19.5, 195, '2025-06-09', '2025-06-08 21:54:14'),
+(49, 13, 'İçecek', 'Su', 200, 0, 0, 0, 0, '2025-06-09', '2025-06-08 21:54:14'),
+(50, 13, 'Öğle', 'Izgara Tavuk', 100, 0, 31, 3.6, 165, '2025-06-09', '2025-06-08 21:56:50'),
+(51, 13, 'Öğle', 'Yoğurt', 100, 4, 3.5, 3, 60, '2025-06-09', '2025-06-08 21:56:50'),
+(52, 13, 'Atıştırmalık', 'Ceviz', 30, 4.2, 4.5, 19.5, 195, '2025-06-09', '2025-06-08 21:56:50'),
+(53, 13, 'İçecek', 'Su', 200, 0, 0, 0, 0, '2025-06-09', '2025-06-08 21:56:50'),
+(54, 13, 'İçecek', 'Yeşil Çay', 200, 0, 0, 0, 4, '2025-06-09', '2025-06-08 21:56:50'),
+(55, 13, 'Akşam', 'Haşlanmış Patates', 100, 20, 2, 0, 90, '2025-06-09', '2025-06-08 21:57:15'),
+(56, 13, 'Atıştırmalık', 'Meyve Barı', 30, 21, 1.5, 3, 105, '2025-06-09', '2025-06-08 21:57:15'),
+(57, 13, 'İçecek', 'Su', 200, 0, 0, 0, 0, '2025-06-09', '2025-06-08 21:57:15'),
+(58, 13, 'Akşam', 'Mercimek Çorbası', 100, 15, 9, 1, 140, '2025-06-09', '2025-06-08 21:58:51'),
+(59, 13, 'Atıştırmalık', 'Badem', 30, 6.6, 6.3, 14.7, 172.5, '2025-06-09', '2025-06-08 21:58:51'),
+(60, 13, 'İçecek', 'Su', 200, 0, 0, 0, 0, '2025-06-09', '2025-06-08 21:58:51'),
+(61, 13, 'Sabah', 'Yulaf Ezmesi', 100, 60, 10, 7, 350, '2025-06-09', '2025-06-08 22:00:00'),
+(62, 13, 'İçecek', 'Su', 200, 0, 0, 0, 0, '2025-06-09', '2025-06-08 23:58:35'),
+(63, 13, 'İçecek', 'Su', 200, 0, 0, 0, 0, '2025-06-09', '2025-06-08 23:58:38'),
+(64, 13, 'İçecek', 'Su', 200, 0, 0, 0, 0, '2025-06-09', '2025-06-08 23:58:42'),
+(65, 13, 'sabah', 'Orman Meyveli Smoothie Kasesi', 100, 36, 9, 10, 310, '2025-06-10', '2025-06-09 23:18:19'),
+(66, 13, 'ogle', 'Fit Karnabahar Pilavı', 100, 18, 16, 12, 300, '2025-06-10', '2025-06-09 23:20:43'),
+(67, 13, 'aksam', 'Kırmızı Lahana ve Nohut Salatası', 100, 25, 12, 14, 310, '2025-06-10', '2025-06-09 23:29:00'),
+(68, 13, 'aksam', 'Kırmızı Lahana ve Nohut Salatası', 100, 25, 12, 14, 310, '2025-06-10', '2025-06-09 23:38:56'),
+(69, 13, 'sabah', 'Yeşil Detoks Smoothie', 100, 20, 5, 8, 210, '2025-06-10', '2025-06-09 23:42:06'),
+(70, 13, 'sabah', 'Yeşil Detoks Smoothie', 100, 20, 5, 8, 210, '2025-06-10', '2025-06-09 23:42:32'),
+(71, 13, 'sabah', 'Yeşil Detoks Smoothie', 100, 20, 5, 8, 210, '2025-06-10', '2025-06-09 23:46:48'),
+(72, 13, '', 'Portakal Suyu', 100, 10, 1, 0.2, 45, '2025-06-10', '2025-06-09 23:53:15'),
+(73, 13, '', 'Süt', 100, 10, 7, 5, 120, '2025-06-10', '2025-06-09 23:54:35'),
+(74, 13, '', 'Süt', 100, 10, 7, 5, 120, '2025-06-10', '2025-06-10 10:55:10'),
+(75, 13, 'sabah', 'Meyveli Chia Puding', 100, 28, 9, 10, 250, '2025-06-10', '2025-06-10 10:55:56'),
+(76, 13, 'sabah', 'Yeşil Çay', 100, 0, 0, 0, 2, '2025-06-10', '2025-06-10 10:57:14'),
+(77, 13, 'aksam', 'Yeşil Çay', 100, 0, 0, 0, 2, '2025-06-10', '2025-06-10 10:57:53'),
+(78, 13, 'sabah', 'Muz', 100, 23, 1, 0.3, 89, '2025-06-10', '2025-06-10 11:21:47'),
+(79, 13, 'ogle', 'börek', 100, 10, 5, 3, 100, '2025-06-10', '2025-06-10 11:32:33'),
+(80, 13, 'ogle', 'Yeşil Çay', 100, 0, 0, 0, 2, '2025-06-10', '2025-06-10 11:37:04'),
+(81, 13, 'sabah', 'Meyveli Chia Puding', 100, 28, 9, 10, 250, '2025-06-10', '2025-06-10 21:36:22'),
+(82, 13, 'sabah', 'Muz', 100, 23, 1, 0.3, 89, '2025-06-10', '2025-06-10 21:36:22'),
+(83, 13, 'sabah', 'Yeşil Çay', 100, 0, 0, 0, 2, '2025-06-10', '2025-06-10 21:36:22'),
+(84, 13, '', 'Portakal Suyu', 100, 10, 1, 0.2, 45, '2025-06-10', '2025-06-10 21:37:42'),
+(85, 13, 'sabah', 'Meyveli Chia Puding', 100, 28, 9, 10, 250, '2025-06-11', '2025-06-10 22:02:03'),
+(86, 13, 'sabah', 'Muz', 100, 23, 1, 0.3, 89, '2025-06-11', '2025-06-10 22:02:03'),
+(87, 13, 'sabah', 'Süt', 100, 10, 7, 5, 120, '2025-06-11', '2025-06-10 22:02:03');
 
 -- --------------------------------------------------------
 
@@ -369,27 +447,30 @@ CREATE TABLE `user` (
   `u_hedef` enum('kilo_vermek','kilo_korumak','kilo_almak') DEFAULT NULL,
   `u_sifre` varchar(50) NOT NULL,
   `gunluk_kalori` int(11) DEFAULT 0,
-  `profil_resmi` varchar(255) DEFAULT NULL
+  `profil_resmi` varchar(255) DEFAULT NULL,
+  `gunluk_protein` float DEFAULT 0,
+  `gunluk_yag` float DEFAULT 0,
+  `gunluk_karbonhidrat` float DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Tablo döküm verisi `user`
 --
 
-INSERT INTO `user` (`u_id`, `u_adi`, `u_soyadi`, `u_tc`, `u_telefon`, `u_mail`, `u_dogumtarih`, `u_kilo`, `u_boy`, `u_antrenman_suresi`, `u_cinsiyet`, `u_aktivite`, `u_hedef`, `u_sifre`, `gunluk_kalori`, `profil_resmi`) VALUES
-(1, 'fatma', 'makarna', '44842304665', '5454030466', 'fatma3434@gmail.com', '1980-01-25', 80, 160, 200, 'kadın', 'orta', 'kilo_vermek', '25f9e794323b453885f5181f1b624d0b', 0, NULL),
-(2, 'asas', 'asas', '44444444444', '5456456666', 'asddassd@gmail.com', '2025-04-12', 66, 170, 120, 'erkek', 'hafif', 'kilo_vermek', '25f9e794323b453885f5181f1b624d0b', 0, NULL),
-(3, 'sudenaz', 'balıkçı', '15113402276', '05444305717', 'sudenazbalikcii58@gmail.com', '2005-01-14', 42, 160, 10, 'kadın', 'hafif', 'kilo_almak', '31afd7d02bcfcb3827da7b59d9ce20e0', 0, NULL),
-(4, 'sudenaz', 'balıkçı', '15113402276', '05444305717', 'sudenazbalikcii58@gmail.com', '2005-01-14', 42, 160, 30, 'kadın', 'hafif', 'kilo_almak', '31afd7d02bcfcb3827da7b59d9ce20e0', 0, NULL),
-(5, 'Esma', 'Çekiç', '10418666421', '02167485657', 'esceko@gmail.com', '2025-05-10', 50, 150, 15, 'kadın', 'hafif', 'kilo_korumak', 'ebba20e9d1f72a37245b1cbfed20b9c5', 0, NULL),
-(6, 'esra', 'na', '10418666424', '05352675659', 'escekor@gmail.com', '2025-06-20', 2, 2, 2, 'erkek', 'orta', 'kilo_vermek', 'e0580b7a065e6ab38a100991d6fa84fe', 0, NULL),
-(7, '', '', '76373763737', NULL, '', '2025-06-04', 78, 178, 120, 'erkek', 'orta', 'kilo_vermek', '25f9e794323b453885f5181f1b624d0b', 2229, NULL),
-(8, 'ahmetsassdsda', 'dursun', '76373763737', '5454020433333', 'maaaaahmet@gmail.com', '2025-06-05', 180, 77, 123, 'erkek', 'hareketsiz', 'kilo_vermek', '6ebe76c9fb411be97b3b0d48b791a7c9', 0, NULL),
-(9, 'ahmetsassdsda', 'dursun', '76373763737', '5454020433333', 'maaaaahmet@gmail.com', '2025-06-05', 5555, 555, 5555, 'erkek', 'hareketsiz', 'kilo_vermek', '6ebe76c9fb411be97b3b0d48b791a7c9', 0, NULL),
-(10, 'ahmetsassdsda', 'dursun', '76373763737', '545402043333322', 'maaaaasahmet@gmail.com', '2025-05-30', 177, 222, 2222, 'erkek', 'hareketsiz', 'kilo_vermek', '745309c91c7a429dc263e47aae973f75', 0, NULL),
-(11, 'asas', 'asas', '44444444444', '5456456666', 'asddassd@gmail.com', '2025-05-29', 133, 333, 3333, 'erkek', 'hareketsiz', 'kilo_vermek', '21f248ab0bffcdca77d888456f6209ef', 0, NULL),
-(12, 'ahmetsassdsda', 'dursun', '76373763737', '5454020433', 'maaaaahmet@gmail.com', '2025-06-12', 2222, 2222, 2222, 'erkek', 'hafif', 'kilo_vermek', 'b58a0586812ab0105e7958c1a110472b', 0, NULL),
-(13, 'Ahmet', 'Dursun', '7777666666', '5454020807', 'ahmet@gmail.com', '2003-01-18', 78, 178, 120, 'erkek', 'orta', 'kilo_vermek', '25f9e794323b453885f5181f1b624d0b', 2271, 'user_13_1748947785.png');
+INSERT INTO `user` (`u_id`, `u_adi`, `u_soyadi`, `u_tc`, `u_telefon`, `u_mail`, `u_dogumtarih`, `u_kilo`, `u_boy`, `u_antrenman_suresi`, `u_cinsiyet`, `u_aktivite`, `u_hedef`, `u_sifre`, `gunluk_kalori`, `profil_resmi`, `gunluk_protein`, `gunluk_yag`, `gunluk_karbonhidrat`) VALUES
+(1, 'fatma', 'makarna', '44842304665', '5454030466', 'fatma3434@gmail.com', '1980-01-25', 80, 160, 200, 'kadın', 'orta', 'kilo_vermek', '25f9e794323b453885f5181f1b624d0b', 0, NULL, 0, 0, 0),
+(2, 'asas', 'asas', '44444444444', '5456456666', 'asddassd@gmail.com', '2025-04-12', 66, 170, 120, 'erkek', 'hafif', 'kilo_vermek', '25f9e794323b453885f5181f1b624d0b', 0, NULL, 0, 0, 0),
+(3, 'sudenaz', 'balıkçı', '15113402276', '05444305717', 'sudenazbalikcii58@gmail.com', '2005-01-14', 42, 160, 10, 'kadın', 'hafif', 'kilo_almak', '31afd7d02bcfcb3827da7b59d9ce20e0', 0, NULL, 0, 0, 0),
+(4, 'sudenaz', 'balıkçı', '15113402276', '05444305717', 'sudenazbalikcii58@gmail.com', '2005-01-14', 42, 160, 30, 'kadın', 'hafif', 'kilo_almak', '31afd7d02bcfcb3827da7b59d9ce20e0', 0, NULL, 0, 0, 0),
+(5, 'Esma', 'Çekiç', '10418666421', '02167485657', 'esceko@gmail.com', '2025-05-10', 50, 150, 15, 'kadın', 'hafif', 'kilo_korumak', 'ebba20e9d1f72a37245b1cbfed20b9c5', 0, NULL, 0, 0, 0),
+(6, 'esra', 'na', '10418666424', '05352675659', 'escekor@gmail.com', '2025-06-20', 2, 2, 2, 'erkek', 'orta', 'kilo_vermek', 'e0580b7a065e6ab38a100991d6fa84fe', 0, NULL, 0, 0, 0),
+(7, '', '', '76373763737', NULL, '', '2025-06-04', 78, 178, 120, 'erkek', 'orta', 'kilo_vermek', '25f9e794323b453885f5181f1b624d0b', 2229, NULL, 0, 0, 0),
+(8, 'ahmetsassdsda', 'dursun', '76373763737', '5454020433333', 'maaaaahmet@gmail.com', '2025-06-05', 180, 77, 123, 'erkek', 'hareketsiz', 'kilo_vermek', '6ebe76c9fb411be97b3b0d48b791a7c9', 0, NULL, 0, 0, 0),
+(9, 'ahmetsassdsda', 'dursun', '76373763737', '5454020433333', 'maaaaahmet@gmail.com', '2025-06-05', 5555, 555, 5555, 'erkek', 'hareketsiz', 'kilo_vermek', '6ebe76c9fb411be97b3b0d48b791a7c9', 0, NULL, 0, 0, 0),
+(10, 'ahmetsassdsda', 'dursun', '76373763737', '545402043333322', 'maaaaasahmet@gmail.com', '2025-05-30', 177, 222, 2222, 'erkek', 'hareketsiz', 'kilo_vermek', '745309c91c7a429dc263e47aae973f75', 0, NULL, 0, 0, 0),
+(11, 'asas', 'asas', '44444444444', '5456456666', 'asddassd@gmail.com', '2025-05-29', 133, 333, 3333, 'erkek', 'hareketsiz', 'kilo_vermek', '21f248ab0bffcdca77d888456f6209ef', 0, NULL, 0, 0, 0),
+(12, 'ahmetsassdsda', 'dursun', '76373763737', '5454020433', 'maaaaahmet@gmail.com', '2025-06-12', 2222, 2222, 2222, 'erkek', 'hafif', 'kilo_vermek', 'b58a0586812ab0105e7958c1a110472b', 0, NULL, 0, 0, 0),
+(13, 'Ahmet', 'Dursun', '7777666666', '5454020807', 'ahmet@gmail.com', '2003-01-18', 78, 178, 120, 'erkek', 'orta', 'kilo_vermek', '25f9e794323b453885f5181f1b624d0b', 2271, 'user_13_1748947785.png', 170, 76, 227);
 
 -- --------------------------------------------------------
 
@@ -426,6 +507,14 @@ INSERT INTO `uyku_kayitlari` (`id`, `kullanici_id`, `tarih`, `uyuma_saati`, `uya
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`a_id`);
+
+--
+-- Tablo için indeksler `calisanlar`
+--
+ALTER TABLE `calisanlar`
+  ADD PRIMARY KEY (`c_id`),
+  ADD UNIQUE KEY `c_mail` (`c_mail`),
+  ADD KEY `u_id` (`u_id`);
 
 --
 -- Tablo için indeksler `diyetisyen_formlari`
@@ -508,6 +597,12 @@ ALTER TABLE `admin`
   MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- Tablo için AUTO_INCREMENT değeri `calisanlar`
+--
+ALTER TABLE `calisanlar`
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
 -- Tablo için AUTO_INCREMENT değeri `diyetisyen_formlari`
 --
 ALTER TABLE `diyetisyen_formlari`
@@ -541,7 +636,7 @@ ALTER TABLE `kullanicilar`
 -- Tablo için AUTO_INCREMENT değeri `kullanici_beslenme`
 --
 ALTER TABLE `kullanici_beslenme`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `kullanici_ruh_hali`
@@ -576,6 +671,12 @@ ALTER TABLE `uyku_kayitlari`
 --
 -- Dökümü yapılmış tablolar için kısıtlamalar
 --
+
+--
+-- Tablo kısıtlamaları `calisanlar`
+--
+ALTER TABLE `calisanlar`
+  ADD CONSTRAINT `calisanlar_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`) ON DELETE CASCADE;
 
 --
 -- Tablo kısıtlamaları `kisisel_hedefler`

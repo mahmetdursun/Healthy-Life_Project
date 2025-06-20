@@ -4,7 +4,7 @@ require_once('../includes/connection.php');
 
 if (isset($_SESSION['error_message'])):
 ?>
-    <div style="
+<div style="
         position: fixed;
         top: 0;
         left: 50%;
@@ -20,8 +20,8 @@ if (isset($_SESSION['error_message'])):
         box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         text-align: center;
     ">
-        ⚠️ <?= $_SESSION['error_message']; ?>
-    </div>
+    ⚠️ <?= $_SESSION['error_message']; ?>
+</div>
 <?php
 unset($_SESSION['error_message']);
 endif;
@@ -67,15 +67,40 @@ if (isset($_POST["admin"])) {
         echo "<script>alert('Admin giriş bilgileri hatalı.');</script>";
     }
 }
+
+// Çalışan Giriş
+if (isset($_POST["calisan"])) {
+    $mail = $_POST["c_mail"];
+    $sifre = $_POST["c_sifre"]; // hashlenmişse md5($sifre);
+
+    $sql = "SELECT * FROM calisanlar WHERE c_mail = ? AND c_sifre = ?";
+    $query = $connection->prepare($sql);
+    $query->bindParam(1, $mail, PDO::PARAM_STR);
+    $query->bindParam(2, $sifre, PDO::PARAM_STR);
+    $query->execute();
+
+    if ($result = $query->fetch()) {
+        $_SESSION["calisan_id"] = $result["c_id"];
+        $_SESSION["c_adi"] = $result["c_adi"];
+        $_SESSION["c_soyadi"] = $result["c_soyadi"];
+        header("Location: calisan_paneli.php");
+        exit;
+    } else {
+        echo "<script>alert('Çalışan giriş bilgileri hatalı.');</script>";
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giriş Formu</title>
     <link rel="stylesheet" href="/proje/assets/css/userLogin.css?v=<?= time(); ?>">
 </head>
+
 <body>
     <div class="container">
         <img src="img/logo.webp" alt="Logo" class="logo">
@@ -110,7 +135,23 @@ if (isset($_POST["admin"])) {
                 </form>
             </div>
 
+            <!-- Çalışan Giriş Formu -->
+            <div class="form">
+                <div class="lock-icon"></div>
+                <form action="" method="POST">
+                    <label for="c_mail">Çalışan Mail:</label>
+                    <input type="text" id="c_mail" name="c_mail" required>
+
+                    <label for="c_sifre">Şifre:</label>
+                    <input type="text" id="c_sifre" name="c_sifre" required> <!-- görünür -->
+
+                    <button type="submit" name="calisan">Çalışan Girişi</button>
+                </form>
+            </div>
+
+
         </div>
     </div>
 </body>
+
 </html>

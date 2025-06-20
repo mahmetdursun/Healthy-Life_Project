@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+    background-color: #f4f7fc;
+}
+
+.calisan-panel-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.logout-button {
+    text-decoration: none;
+    background-color: #e63946;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.panel-box h2 {
+    color: #2b2d42;
+}
+
+.panel-box p {
+    color: #555;
+}
