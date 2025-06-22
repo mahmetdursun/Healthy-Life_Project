@@ -1,7 +1,7 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #0F172A;
-  color: #fff;
+  background: linear-gradient(to right, #e8f5e9, #c8e6c9);
+  color: #2e3d27;
   margin: 0;
   padding: 1.5rem;
 }
@@ -16,11 +16,12 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #2e7d32;
 }
 
 .date {
   font-size: 0.9rem;
-  background: #1E293B;
+  background: #a5d6a7;
   padding: 4px 10px;
   border-radius: 8px;
 }
@@ -32,103 +33,97 @@ body {
 }
 
 .makro-kalori {
-  background-color: #1E293B;
+  background-color: #f1f8e9;
   padding: 1rem;
   border-radius: 20px;
-  position: relative;
   text-align: center;
 }
 
 .makro-kalori h4 {
   margin: 0;
   font-size: 1.2rem;
-  color: #ccc;
+  color: #388e3c;
   text-align: left;
 }
 
-.kalori-semicircle {
+.kalori-bar-wrapper {
+  background-color: #c8e6c9;
+  border-radius: 10px;
+  height: 20px;
   margin: 1rem 0;
-  font-size: 1.3rem;
-  color: #60A5FA;
-  font-weight: bold;
+  overflow: hidden;
 }
 
-.kalori-semicircle .label {
-  display: block;
-  font-size: 1rem;
-  color: #93C5FD;
-}
-
-.kalori-arc {
-  width: 100%;
-  height: 50px;
-  margin-bottom: 0.5rem;
+.kalori-bar {
+  height: 100%;
+  background-color: #66bb6a;
+  width: 0%; /* Dinamik olarak JS ile güncellenecek */
+  transition: width 0.5s ease-in-out;
 }
 
 .kalori-degerler {
   display: flex;
   justify-content: space-between;
-  color: #94A3B8;
   font-size: 0.95rem;
-  margin-top: 1rem;
+  color: #2e3d27;
 }
 
 .makro-kutu {
-  background-color: #1E293B;
+  background-color: #e0f2f1;
   padding: 1rem;
   border-radius: 16px;
   margin-bottom: 1rem;
-  color: #fff;
+  color: #2e3d27;
 }
 
 .makro-kutu .etiket {
-  display: block;
   font-size: 1.05rem;
-  font-weight: 500;
-  margin-bottom: 0.2rem;
+  font-weight: bold;
+  color: #388e3c;
 }
 
 .makro-kutu .deger {
-  display: block;
-  margin-bottom: 0.2rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
 }
 
-.kalori-semicircle .kalan-value {
-  font-size: 1.4rem;
-  margin-top: 0.3rem;
+.makro-kutu .progress-bg {
+  background: #c8e6c9;
+  height: 8px;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.makro-kutu .cizgi {
-  height: 2px;
-  background-color: #3B82F6;
-  margin: 0.4rem 0;
+.makro-kutu .progress-bar {
+  background: #4caf50;
+  height: 100%;
+  width: 0%;
+  transition: width 0.5s ease;
 }
 
 .makro-kutu small {
-  font-size: 0.9rem;
-  color: #3B82F6;
+  font-size: 0.85rem;
+  color: #2e7d32;
 }
 
 .su-kutusu {
   grid-column: span 2;
-  background-color: #1E293B;
+  background-color: #f1f8e9;
   padding: 1rem;
   border-radius: 20px;
+  color: #2e7d32;
 }
 
 .su-kutusu h4 {
-  margin: 0;
+  margin-bottom: 1rem;
   font-size: 1.1rem;
-  margin-bottom: 0.5rem;
 }
 
 .su-gorsel {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  color: #60A5FA;
-  font-weight: bold;
-  font-size: 1rem;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .bardaklar {
@@ -139,23 +134,34 @@ body {
 .bardak {
   width: 28px;
   height: 36px;
-  background: linear-gradient(to top, #3B82F6 50%, #E2E8F0 50%);
-  border: 1px solid #64748B;
+  background: #c8e6c9;
+  border: 1px solid #81c784;
+  border-radius: 4px;
+  transition: background 0.3s;
 }
 
-
-.yediklerim {
-  margin-top: 2rem;
+.bardak.active {
+  background: #4caf50;
 }
 
-.ogun-kart-baslik {
-  margin-top: 1.5rem;
-  color: #fff;
+.su-btn {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
   font-size: 1.2rem;
+  transition: background 0.2s;
 }
+
+.su-btn:hover {
+  background: #388e3c;
+}
+
 
 .yemek-kart {
-  background: #1F2B40;
+  background: #388e3c;
   border-radius: 12px;
   padding: 1rem;
   color: #fff;
@@ -183,3 +189,52 @@ body {
   line-height: 1.4;
 }
 
+form {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  background-color: #e8f5e9;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+form label {
+  font-weight: bold;
+  color: #2e7d32;
+  font-size: 1rem;
+}
+
+form input[type="date"] {
+  padding: 8px 12px;
+  border: 1px solid #a5d6a7;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  color: #2e3d27;
+  transition: border-color 0.3s ease;
+}
+
+form input[type="date"]:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+form button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+  background-color: #388e3c;
+  transform: scale(1.03);
+}

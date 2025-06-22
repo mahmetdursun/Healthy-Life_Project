@@ -1,67 +1,57 @@
-/* === Tarifler Sayfası Stil Dosyası === */
-
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #0a0f1e;
-  color: #fff;
+  background: linear-gradient(to right, #e8f5e9, #c8e6c9);
+  color: #2e3d27;
 }
 
 .tarifler-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-inline: 1rem;
+  padding: 1rem;
+  background-color: #4CAF50;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .tarifler-title {
-  font-size: 1.8rem;
-  color: #ffffff;
+  font-size: 1.2rem;
+  padding-left: 20px;
 }
 
 .makrolarim-link {
   font-size: 1rem;
-  background-color: #007BFF;
+  background-color: #66bb6a;
   color: white;
   padding: 8px 14px;
   border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
+  margin-left: 10px;
   transition: background-color 0.3s ease;
 }
 
 .makrolarim-link:hover {
-  background-color: #0056b3;
-}
-
-
-.tarifler-container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 2rem 1rem;
-}
-
-.tarifler-container h1 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  color: #fff;
+  background-color: #388e3c;
 }
 
 .tarifler-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
+  padding: 2rem 1rem;
 }
 
 .tarif-kart {
-  background: #1c2331;
+  background: #f1f8e9;
   border-radius: 16px;
   padding: 1rem;
-  color: #fff;
+  color: #2e3d27;
   text-decoration: none;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
 
@@ -78,27 +68,26 @@ body {
 }
 
 .tarif-kart .etiket {
-    background: #4caf50;
-    color: white;
-    padding: 4px 8px;
-    font-size: 12px;
-    border-radius: 0 0 8px 0;
-    position: absolute;
-    margin-top: 136px;
-    margin-left: 0;
+  background: #388e3c;
+  color: white;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: -2.2rem;
+  width: fit-content;
 }
 
-tarif-kart .makro {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    background: #4caf50;
-    padding: 4px 8px;
-    font-size: 12px;
+.tarif-kart .makro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0.5rem 0;
 }
 
 .tarif-kart .makro span {
-  background: #325aaa;
+  background: #a5d6a7;
+  color: #1b5e20;
   border-radius: 8px;
   padding: 4px 8px;
   font-size: 0.75rem;
@@ -108,70 +97,44 @@ tarif-kart .makro {
   font-size: 1rem;
   font-weight: bold;
   margin-bottom: 0.25rem;
+  color: #2e7d32;
 }
 
 .tarif-kart p {
   font-size: 0.85rem;
-  color: #ccc;
+  color: #4e5e4a;
   margin: 0;
 }
 
-.kalori-filter {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 1rem 0;
-  padding: 0.5rem 1rem;
-}
-
-.kalori-filter span {
-  font-weight: bold;
-  color: #fff;
-}
-
-.filter-btn {
-  background-color: #1e1e1e;
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 0.9rem;
-  border: 1px solid #444;
-  transition: background-color 0.2s ease;
-}
-
-.filter-btn:hover {
-  background-color: #333;
-}
-
-
-
+.kalori-filter,
 .tarif-secim {
   display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin: 2rem 0;
   flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2rem 1rem;
 }
+
+.filter-btn,
 .ogun-btn {
-  background: #222;
-  color: #fff;
-  padding: 1rem 2rem;
+  background-color: #81c784;
+  color: #1b5e20;
+  padding: 10px 20px;
+  border-radius: 10px;
   text-decoration: none;
-  border-radius: 12px;
   font-weight: bold;
   transition: 0.3s;
+  border: none;
 }
+
+.filter-btn:hover,
 .ogun-btn:hover {
-  background: #444;
+  background-color: #66bb6a;
   transform: scale(1.05);
 }
 
-
 .tamamlayici-baslik {
   font-size: 1.5rem;
-  color: #fff;
+  color: #2e7d32;
   margin: 2rem 1rem 1rem;
   display: flex;
   justify-content: space-between;
@@ -180,7 +143,7 @@ tarif-kart .makro {
 
 .gor-link {
   font-size: 0.9rem;
-  color: #7dbde8;
+  color: #2e7d32;
   text-decoration: none;
 }
 
@@ -188,44 +151,34 @@ tarif-kart .makro {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 0 1rem;
+  padding: 0 1rem 2rem;
 }
 
 .besin-kart {
-  background-color: #1e1f25;
+  background-color: #e0f2f1;
   border-radius: 10px;
-  padding: 0.8rem 1rem;
+  padding: 1rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .besin-resim {
   width: 90px;
   height: 90px;
   object-fit: contain;
-  margin-right: 1rem;
   border-radius: 5px;
 }
 
 .besin-bilgi {
   flex: 1;
-  color: #fff;
+  color: #2e3d27;
   font-size: 0.85rem;
 }
 
-.besin-ekle-btn {
-  background-color: #2f3a56;
-  color: white;
-  border: none;
-  font-size: 1.2rem;
-  padding: 0.3rem 0.7rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.2s;
+.besin-kart h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #2e7d32;
 }
-
-.besin-ekle-btn:hover {
-  background-color: #3f4b67;
-}
-

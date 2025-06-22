@@ -2,6 +2,12 @@
 session_start();
 require_once('../includes/connection.php');
 
+if (!isset($_SESSION['user_id'])) {
+    echo "Oturum bulunamadı.";
+    exit;
+}
+
+$user_id = $_SESSION['user_id'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Form verilerini al
@@ -20,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $rapor_yolu = null;
     if (isset($_FILES['rapor']) && $_FILES['rapor']['error'] == UPLOAD_ERR_OK) {
         $dosya_adi = time() . '_' . basename($_FILES['rapor']['name']);
-        $hedef_dizin = '../uploads/'; // uploads klasörü olmalı
+        $hedef_dizin = '../uploads/';
         if (!is_dir($hedef_dizin)) {
             mkdir($hedef_dizin, 0777, true);
         }
@@ -31,10 +37,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         $sql = "INSERT INTO diyetisyen_formlari 
-                (adsoyad, yas, boy, kilo, hedef_kilo, ogun, tercih, alerji, gecmis_diyet, rapor, mesaj) 
-                VALUES (:adsoyad, :yas, :boy, :kilo, :hedef_kilo, :ogun, :tercih, :alerji, :gecmis_diyet, :rapor, :mesaj)";
+            (user_id, adsoyad, yas, boy, kilo, hedef_kilo, ogun, tercih, alerji, gecmis_diyet, rapor, mesaj, created_at) 
+            VALUES 
+            (:user_id, :adsoyad, :yas, :boy, :kilo, :hedef_kilo, :ogun, :tercih, :alerji, :gecmis_diyet, :rapor, :mesaj, NOW())";
+
         $stmt = $connection->prepare($sql);
         $stmt->execute([
+            ':user_id' => $user_id,
             ':adsoyad' => $adsoyad,
             ':yas' => $yas,
             ':boy' => $boy,
@@ -55,4 +64,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "Geçersiz istek.";
 }
-?>

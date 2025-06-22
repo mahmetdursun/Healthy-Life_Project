@@ -87,8 +87,8 @@ if (!isset($_SESSION['user_id'])) {
             </select>
 
             <button type="submit">Formu Gönder</button>
+            <a class="dön" href="../index.php">Ana Sayfaya Dön</a>
         </form>
-        <a href="../index.php">Ana Sayfaya Dön</a>
     </div>
 </body>
 </html>

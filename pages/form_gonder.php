@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ]);
 
         // Başarılı ise yönlendir
-        header("Location: profilim.php?mesaj=basarili");
+        header("Location: profile.php?section=saglik");
         exit();
 
     } catch (PDOException $e) {

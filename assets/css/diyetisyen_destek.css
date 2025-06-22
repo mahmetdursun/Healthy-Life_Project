@@ -49,6 +49,7 @@ input:focus, textarea:focus, select:focus {
 
 button {
     margin-top: 25px;
+    margin-bottom: 10px;
     background: #2e7d32;
     color: white;
     padding: 14px 20px;
@@ -68,4 +69,21 @@ button:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 20px;
+}
+
+a {
+    display: flex;
+    justify-content: center;
+    padding: 12px 30px;
+    background-color: #388e3c;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+a:hover {
+    background-color: #2e7d32;
+    transform: translateY(-2px);
 }

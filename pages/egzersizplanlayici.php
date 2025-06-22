@@ -99,22 +99,24 @@ foreach ($egzersizler as $egz) {
 
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <title>Egzersiz Planlayıcı</title>
     <link rel="stylesheet" href="../assets/css/egzersizplanlayici.css?v=<?= time(); ?>">
 </head>
+
 <body>
-<div class="container">
-    <h1>🏋️ Egzersiz Planlayıcı</h1>
+    <div class="container">
+        <h1>🏋️ Egzersiz Planlayıcı</h1>
 
-    <?php if (!empty($hataMesaji)): ?>
-        <div style="color: red; margin-bottom: 1rem; font-weight: bold;"><?= htmlspecialchars($hataMesaji) ?></div>
-    <?php endif; ?>
+        <?php if (!empty($hataMesaji)): ?>
+        <div class="hata-mesajı"><?= htmlspecialchars($hataMesaji) ?></div>
+        <?php endif; ?>
 
-    <form method="post">
-        <div class="egzersiz-listesi">
-            <?php foreach ($egzersizListesi as $egzersiz): ?>
+        <form method="post">
+            <div class="egzersiz-listesi">
+                <?php foreach ($egzersizListesi as $egzersiz): ?>
                 <div class="egzersiz-item">
                     <label>
                         <input type="checkbox" name="secili[<?= $egzersiz ?>]">
@@ -124,15 +126,19 @@ foreach ($egzersizler as $egz) {
                     <input type="time" name="egzersiz[<?= $egzersiz ?>][baslangic]">
                     <input type="time" name="egzersiz[<?= $egzersiz ?>][bitis]">
                 </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
+            <button type="submit">Egzersizleri Kaydet</button>
+        </form>
+
+        <h2>📋 Kayıtlı Egzersizler</h2>
+        <div class="kalori_yakılan">
+            <h3>🔥 Toplam Yakılan Kalori</h3>
+            <p class="kalori_yakılan-text"><?= number_format($toplamKalori, 2) ?> kcal</p>
         </div>
-        <button type="submit">Egzersizleri Kaydet</button>
-    </form>
 
-    <h2>📋 Kayıtlı Egzersizler</h2>
-    <h3>🔥 Toplam Yakılan Kalori: <?= number_format($toplamKalori, 2) ?> kcal</h3>
 
-    <?php if (count($egzersizler) > 0): ?>
+        <?php if (count($egzersizler) > 0): ?>
         <table>
             <thead>
                 <tr>
@@ -145,21 +151,22 @@ foreach ($egzersizler as $egz) {
             </thead>
             <tbody>
                 <?php foreach ($egzersizler as $row): ?>
-                    <tr>
-                        <td><?= htmlspecialchars($row['egzersiz_adi']) ?></td>
-                        <td><?= htmlspecialchars($row['suresi']) ?></td>
-                        <td><?= $row['baslangic_saati'] ?? '-' ?></td>
-                        <td><?= $row['bitis_saati'] ?? '-' ?></td>
-                        <td><?= number_format($row['suresi'] * $kaloriOranlari[$row['egzersiz_adi']], 2) ?></td>
-                    </tr>
+                <tr>
+                    <td><?= htmlspecialchars($row['egzersiz_adi']) ?></td>
+                    <td><?= htmlspecialchars($row['suresi']) ?></td>
+                    <td><?= $row['baslangic_saati'] ?? '-' ?></td>
+                    <td><?= $row['bitis_saati'] ?? '-' ?></td>
+                    <td><?= number_format($row['suresi'] * $kaloriOranlari[$row['egzersiz_adi']], 2) ?></td>
+                </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
-    <?php else: ?>
-        <p style="text-align:center;">Henüz kayıtlı egzersiz yok.</p>
-    <?php endif; ?>
+        <?php else: ?>
+        <p class="text">Henüz kayıtlı egzersiz yok.</p>
+        <?php endif; ?>
 
-    <a href="../index.php">← Ana Sayfaya Dön</a>
-</div>
+        <a href="../index.php">← Ana Sayfaya Dön</a>
+    </div>
 </body>
+
 </html>

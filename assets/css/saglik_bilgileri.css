@@ -67,3 +67,21 @@ button {
 button:hover {
     background-color: #004d40;
 }
+
+.dön{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    margin-top: 25px;
+    padding: 12px;
+    width: 96%;
+    border: none;
+    background-color: #00796b;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    align-items: center;
+}

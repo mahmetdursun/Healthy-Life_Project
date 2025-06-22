@@ -46,51 +46,8 @@ if (isset($_POST["giris"])) {
         echo "<script>alert('Giriş bilgileri hatalı.');</script>";
     }
 }
-
-// Admin Giriş
-if (isset($_POST["admin"])) {
-    $a_adi = $_POST["a_adi"];
-    $a_sifre = $_POST["a_sifre"];
-
-    $sql = "SELECT * FROM admin WHERE a_adi = ? AND a_sifre = ?";
-    $query = $connection->prepare($sql);
-    $query->bindParam(1, $a_adi, PDO::PARAM_STR);
-    $query->bindParam(2, $a_sifre, PDO::PARAM_STR);
-    $query->execute();
-
-    if ($result = $query->fetch()) {
-        $_SESSION["admin_id"] = $result["a_id"];
-        $_SESSION["a_adi"] = $result["a_adi"];
-        header("Location: admin.php"); 
-        exit;
-    } else {
-        echo "<script>alert('Admin giriş bilgileri hatalı.');</script>";
-    }
-}
-
-// Çalışan Giriş
-if (isset($_POST["calisan"])) {
-    $mail = $_POST["c_mail"];
-    $sifre = $_POST["c_sifre"]; // hashlenmişse md5($sifre);
-
-    $sql = "SELECT * FROM calisanlar WHERE c_mail = ? AND c_sifre = ?";
-    $query = $connection->prepare($sql);
-    $query->bindParam(1, $mail, PDO::PARAM_STR);
-    $query->bindParam(2, $sifre, PDO::PARAM_STR);
-    $query->execute();
-
-    if ($result = $query->fetch()) {
-        $_SESSION["calisan_id"] = $result["c_id"];
-        $_SESSION["c_adi"] = $result["c_adi"];
-        $_SESSION["c_soyadi"] = $result["c_soyadi"];
-        header("Location: calisan_paneli.php");
-        exit;
-    } else {
-        echo "<script>alert('Çalışan giriş bilgileri hatalı.');</script>";
-    }
-}
-
 ?>
+
 <!DOCTYPE html>
 <html lang="tr">
 
@@ -103,11 +60,9 @@ if (isset($_POST["calisan"])) {
 
 <body>
     <div class="container">
-        <img src="img/logo.webp" alt="Logo" class="logo">
         <h2>Giriş Paneli</h2>
         <div class="form-wrapper">
 
-            <!-- Kullanıcı Giriş Formu -->
             <div class="form">
                 <div class="lock-icon"></div>
                 <form action="" method="POST">
@@ -120,36 +75,6 @@ if (isset($_POST["calisan"])) {
                     <button type="submit" name="giris">Giriş Yap</button>
                 </form>
             </div>
-
-            <!-- Admin Giriş Formu -->
-            <div class="form">
-                <div class="lock-icon"></div>
-                <form action="" method="POST">
-                    <label for="a_adi">Admin Adı:</label>
-                    <input type="text" id="a_adi" name="a_adi" required>
-
-                    <label for="a_sifre">Şifre:</label>
-                    <input type="password" id="a_sifre" name="a_sifre" required>
-
-                    <button type="submit" name="admin">Admin Giriş</button>
-                </form>
-            </div>
-
-            <!-- Çalışan Giriş Formu -->
-            <div class="form">
-                <div class="lock-icon"></div>
-                <form action="" method="POST">
-                    <label for="c_mail">Çalışan Mail:</label>
-                    <input type="text" id="c_mail" name="c_mail" required>
-
-                    <label for="c_sifre">Şifre:</label>
-                    <input type="text" id="c_sifre" name="c_sifre" required> <!-- görünür -->
-
-                    <button type="submit" name="calisan">Çalışan Girişi</button>
-                </form>
-            </div>
-
-
         </div>
     </div>
 </body>

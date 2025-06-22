@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+    background: linear-gradient(135deg, #7FC782 0%, #a2e8b2 100%);
     font-family: 'Poppins', sans-serif;
     height: 100vh;
     display: flex;
@@ -10,37 +10,80 @@ body {
 }
 
 .container {
-    background: pink;
-    padding: 30px 40px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     width: 90%;
-    max-width: 500px;
+    max-width: 520px;
     text-align: center;
+    animation: fadeIn 0.6s ease-in-out;
+    border-left: 6px solid #4CAF50;
 }
 
 h2 {
     margin-bottom: 20px;
-    color: #333;
+    color: #2f6935;
+    font-size: 26px;
+}
+
+h3 {
+    color: #2f6935;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 20px;
 }
 
 p {
     margin: 10px 0;
-    font-size: 18px;
-    color: #555;
+    font-size: 17px;
+    color: #444;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 20px;
+    max-width: 300px;
+}
+
+li {
+    background: #f3fdf5;
+    border: 1px solid #bdeac8;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .button {
     display: inline-block;
     margin-top: 20px;
-    padding: 12px 20px;
+    padding: 12px 24px;
     background-color: #4CAF50;
     color: white;
-    border-radius: 8px;
+    border-radius: 10px;
     text-decoration: none;
     font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 .button:hover {
     background-color: #45a049;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

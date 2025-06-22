@@ -1,191 +1,170 @@
+/* === GENEL YENİ TASARIM (UI GÜNCELLEMESİ) === */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 html, body {
   width: 100%;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f1f5f9;
+  color: #1e293b;
   overflow-x: hidden;
 }
 
 .admin-container {
-    display: flex;
+  display: flex;
+  min-height: 100vh;
 }
 
+/* === SIDEBAR === */
 .sidebar {
-    width: 220px;
-    background: #1f2937;
-    color: white;
-    min-height: 100vh;
-    padding: 1rem;
+  width: 250px;
+  background: #0f172a; /* Lacivert/Gece mavisi */
+  color: white;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .sidebar h2 {
-    font-size: 1.4rem;
-    margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  color: #facc15;
 }
 
 .sidebar ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sidebar li {
-    margin: 1rem 0;
-}
-
-.sidebar a {
-    text-decoration: none;
-    color: white;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.sidebar a.active, .sidebar a:hover {
-    color: #60a5fa;
-}
-
-.main-panel {
-  flex-grow: 1;
-  padding: 1.5rem;
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-.topbar {
+  list-style: none;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  background: white;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  margin-bottom: 2rem;
+  flex-direction: column;
   gap: 1rem;
 }
 
-
-.topbar select, .topbar input[type="date"] {
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+.sidebar a {
+  text-decoration: none;
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
 }
 
-.topbar-icons {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+.sidebar a.active,
+.sidebar a:hover {
+  background: #1e40af;
+  color: #facc15;
 }
 
-.topbar-icons .avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
+/* === MAIN PANEL === */
+.main-panel {
+  flex-grow: 1;
+  padding: 2rem;
+  background: #f8fafc;
+  overflow-x: hidden;
 }
 
+/* === KART TASARIMI === */
 .user-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
 }
 
 .user-card {
-    background-color: #1f2937; /* Koyu gri (uygun zemin) */
-    border-radius: 12px;
-    padding: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    color: #e5e7eb;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s;
+  background-color: #1e293b;
+  color: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1.2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s, background 0.3s;
 }
 
 .user-card:hover {
-    transform: translateY(-3px);
-    background-color: #273449;
+  transform: translateY(-4px);
+  background-color: #334155;
 }
 
 .user-card img {
-    width: 65px;
-    height: 65px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid #64748b;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #facc15;
 }
 
 .user-info h3 {
-    margin: 0;
-    font-size: 1.2rem;
-    color: #ffffff;
-    font-weight: 600;
-    letter-spacing: 0.3px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #fef9c3;
 }
 
 .user-info p {
-    margin: 3px 0;
-    font-size: 0.95rem;
-    line-height: 1.4;
-    color: #cbd5e1;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #e2e8f0;
 }
 
 .user-info p strong {
-    color: #facc15; /* sarıya çalan vurgu (tailwind warning rengi) */
+  color: #facc15;
 }
 
-
+/* === FORM TASARIMI === */
 .form-add {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
   padding: 2rem;
-  background: #f9fafb;
+  background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  font-family: 'Segoe UI', sans-serif;
 }
 
-.form-add label {
-  font-weight: bold;
-  margin-bottom: 0.3rem;
-  display: block;
-  font-size: 0.95rem;
-  color: #374151;
-}
-
-.form-add .form-group {
+.form-group {
   display: flex;
   flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
 }
 
 .form-add input,
 .form-add select,
 .form-add textarea {
   padding: 10px 14px;
+  font-size: 0.95rem;
   border: 2px solid #cbd5e1;
   border-radius: 8px;
-  font-size: 0.95rem;
-  background: white;
-  transition: 0.3s;
+  background: #f8fafc;
+  transition: border 0.3s;
 }
 
 .form-add input:focus,
 .form-add select:focus,
 .form-add textarea:focus {
-  outline: none;
   border-color: #3b82f6;
   background: #eff6ff;
+  outline: none;
 }
 
 .form-add button {
   grid-column: span 2;
   padding: 12px 18px;
-  border: none;
-  background: #3b82f6;
+  background: #0f172a; /* koyu yeşil mavi ton */
   color: white;
+  border: none;
   border-radius: 8px;
   font-size: 1rem;
   font-weight: bold;
@@ -194,5 +173,37 @@ html, body {
 }
 
 .form-add button:hover {
-  background: #2563eb;
+  background: #115e59;
+}
+
+/* === BUTONLAR === */
+.card-actions {
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-edit {
+  background-color: #22c55e;
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #16a34a;
+}
+
+.btn-delete {
+  background-color: #ef4444;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #b91c1c;
 }

@@ -1,0 +1,89 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #1e1e2f;
+    color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    background-color: #2a2a3b;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #ffffff;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+.veri-kutusu {
+    overflow-x: auto;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    background-color: #3a3a50;
+}
+
+.veri-kutusu h2 {
+    margin-top: 0;
+    color: #ffcb6b;
+    font-size: 20px;
+    border-bottom: 2px solid #444;
+    padding-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #555;
+}
+
+table th {
+    background-color: #4e4e63;
+    color: #f9f9f9;
+    font-weight: bold;
+}
+
+table td {
+    background-color: #2e2e44;
+}
+
+table tr:hover td {
+    background-color: #44445c;
+}
+
+p {
+    color: #ccc;
+    font-style: italic;
+}

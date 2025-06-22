@@ -1,41 +1,106 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: "Segoe UI", sans-serif;
-    background-color: #f4f7fc;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(to right, #e8f5e9, #c8e6c9);
+  color: #2e3d27;
 }
 
 .calisan-panel-container {
-    max-width: 900px;
-    margin: 40px auto;
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 1000px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 1rem;
-    margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #a5d6a7;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  color: #2e7d32;
 }
 
 .logout-button {
-    text-decoration: none;
-    background-color: #e63946;
-    color: white;
-    padding: 8px 14px;
-    border-radius: 5px;
-    font-weight: bold;
+  text-decoration: none;
+  background-color: #ef5350;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #c62828;
+}
+
+.panel-box {
+  background-color: #f1f8e9;
+  padding: 1.5rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .panel-box h2 {
-    color: #2b2d42;
+  color: #388e3c;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .panel-box p {
-    color: #555;
+  color: #4e5e4a;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #4CAF50;
+  color: white;
+  margin-top: 10px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #388e3c;
+  transform: scale(1.03);
+}
+
+.kullanici-listesi {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+}
+
+.kullanici-kart {
+  background: #e8f5e9;
+  border-left: 6px solid #4CAF50;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: background 0.3s ease;
+}
+
+.kullanici-kart strong {
+  font-size: 1.1rem;
+  color: #2e7d32;
+}
+
+.kullanici-kart:hover {
+  background: #dcedc8;
 }

@@ -1,9 +1,20 @@
 <?php
+session_start(); 
+require_once('../includes/connection.php');
+
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['error_message'] = 'Bu sayfaya erişmek için lütfen giriş yapınız.';
+    header('Location: userLogin.php');
+    exit;
+}
+
 $ogun = $_GET['ogun'] ?? null;
 $kalori_aralik = $_GET['kalori'] ?? null;
 include __DIR__ . '/tarif-array.php';
 include __DIR__ . '/tarif-besin-array.php';
+
 ?>
+
 <!DOCTYPE html>
 <html lang="tr">
 
@@ -195,7 +206,6 @@ include __DIR__ . '/tarif-besin-array.php';
         <label class="besin-kart">
             <img class="besin-resim" src="<?= $v['resim'] ?>" alt="<?= $v['isim'] ?>">
             <div class="besin-bilgi">
-                <strong><?= $besin['isim'] ?></strong>
                 <span><?= $v['kalori'] ?> kcal</span>
                 <span><?= $v['karb'] ?>g karb</span>
                 <span><?= $v['pro'] ?>g pro</span>

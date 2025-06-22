@@ -1,0 +1,97 @@
+.mesaj-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+  text-align: center;
+  color: #2e7d32;
+  font-size: 1.7rem;
+  margin-bottom: 1.5rem;
+}
+
+.mesajlar {
+  max-height: 450px;
+  overflow-y: auto;
+  margin-bottom: 2rem;
+  border: 1px solid #a5d6a7;
+  background: #f1f8e9;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.mesaj {
+  margin-bottom: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  max-width: 75%;
+  font-size: 0.95rem;
+}
+
+.gonderen {
+  background: #c8e6c9;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.alici {
+  background: #e8f5e9;
+  align-self: flex-start;
+}
+
+.mesaj-icerik {
+  white-space: pre-wrap;
+}
+
+.mesaj-tarih {
+  font-size: 0.8em;
+  color: #4e5e4a;
+  text-align: right;
+  margin-top: 0.3rem;
+}
+
+.mesaj-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  border-top: 1px solid #c8e6c9;
+  padding-top: 1.5rem;
+}
+
+.mesaj-form textarea {
+  height: 120px;
+  padding: 12px;
+  font-size: 1rem;
+  resize: none;
+  border-radius: 10px;
+  border: 1px solid #a5d6a7;
+  background: #f9fefb;
+  transition: border 0.3s ease;
+}
+
+.mesaj-form textarea:focus {
+  border: 2px solid #4CAF50;
+  outline: none;
+}
+
+.mesaj-form button {
+  padding: 12px;
+  background: #4CAF50;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.mesaj-form button:hover {
+  background: #388e3c;
+  transform: scale(1.03);
+}

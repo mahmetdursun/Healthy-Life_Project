@@ -1,0 +1,78 @@
+/* === calisan_detay.css - Yenilenmiş UI === */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #e8f5e9, #c8e6c9);
+  color: #2e3d27;
+}
+
+.detay-container {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detay-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.detay-card:hover {
+  transform: scale(1.01);
+}
+
+.profil-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 5px solid #a5d6a7;
+}
+
+.detay-card h2 {
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+  color: #2e7d32;
+}
+
+.detay-card p {
+  margin: 10px 0;
+  font-size: 1rem;
+  background: #f1f8e9;
+  padding: 10px 15px;
+  border-radius: 10px;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.04);
+}
+
+.detay-card p strong {
+  color: #388e3c;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 24px;
+  background: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background: #388e3c;
+  transform: scale(1.05);
+}

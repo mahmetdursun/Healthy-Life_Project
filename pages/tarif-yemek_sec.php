@@ -1,9 +1,19 @@
 <?php
+session_start(); 
+require_once('../includes/connection.php');
+
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['error_message'] = 'Bu sayfaya erişmek için lütfen giriş yapınız.';
+    header('Location: userLogin.php');
+    exit;
+}
+
 $section = strtolower($_GET['section'] ?? '');
 include __DIR__ . '/tarif-array.php';
 include __DIR__ . '/tarif-besin-array.php';
 
 $tarif_listesi = isset($tarifler[$section]) ? $tarifler[$section] : [];
+
 ?>
 
 <!DOCTYPE html>
@@ -13,166 +23,7 @@ $tarif_listesi = isset($tarifler[$section]) ? $tarifler[$section] : [];
     <meta charset="UTF-8">
     <title>Tarif Seç</title>
     <link rel="stylesheet" href="../assets/css/tarifler.css?v=<?= time(); ?>">
-    <style>
-    .ogun-form {
-        margin: 2rem 0;
-        margin-left: 1.5rem;
-    }
-
-    h1 {
-        margin-left: 1.5rem;
-    }
-
-    h2 {
-        margin-left: 1.5rem;
-    }
-
-    select {
-        padding: 10px;
-        font-size: 16px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-    }
-
-    .tarifler-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 1.5rem;
-    }
-
-    .tarif-kart {
-        background: #1c2331;
-        border-radius: 16px;
-        padding: 1rem;
-        color: #fff;
-        text-decoration: none;
-        display: flex;
-        flex-direction: column;
-        transition: transform 0.3s ease;
-    }
-
-    .tarif-kart:hover {
-        transform: scale(1.03);
-    }
-
-    .tarif-kart img {
-        width: 100%;
-        height: 160px;
-        object-fit: cover;
-        border-radius: 10px;
-        margin-bottom: 0.5rem;
-    }
-
-    .tarif-kart .etiket {
-        background: #4caf50;
-        color: white;
-        padding: 4px 8px;
-        font-size: 12px;
-        border-radius: 0 0 8px 0;
-        position: absolute;
-        margin-top: 136px;
-        margin-left: 0;
-    }
-
-    tarif-kart .makro {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        background: #4caf50;
-        padding: 4px 8px;
-        font-size: 12px;
-    }
-
-    .tarif-kart .makro span {
-        background: #325aaa;
-        border-radius: 8px;
-        padding: 4px 8px;
-        font-size: 0.75rem;
-    }
-
-    .tarif-kart h3 {
-        font-size: 1rem;
-        font-weight: bold;
-        margin-bottom: 0.25rem;
-    }
-
-    .tarif-kart p {
-        font-size: 0.85rem;
-        color: #ccc;
-        margin: 0;
-    }
-
-    .tarif-checkbox {
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        width: 20px;
-        height: 20px;
-        z-index: 2;
-        accent-color: #007bff;
-    }
-
-    .form-title {
-        font-size: 1.6rem;
-        color: #ffffff;
-        margin: 2rem 0 1rem;
-        margin-left: 1.5rem;
-    }
-
-    .manuel-form {
-        padding: 1.5rem;
-        border-radius: 12px;
-        max-width: 800px;
-        color: #fff;
-    }
-
-    .form-group {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 1rem;
-    }
-
-    .form-row {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-        margin-bottom: 1rem;
-    }
-
-    .form-group label {
-        font-size: 1rem;
-        margin-bottom: 0.3rem;
-        font-weight: 500;
-    }
-
-    .manuel-form input[type="text"],
-    .manuel-form input[type="number"] {
-        background-color: #1f2937;
-        color: #d1d5db;
-        border: 1px solid #374151;
-        border-radius: 8px;
-        padding: 0.6rem 0.8rem;
-        font-size: 1rem;
-        outline: none;
-        transition: border-color 0.3s;
-    }
-
-    .manuel-form input:focus {
-        border-color: #3b82f6;
-    }
-
-    .submit-btn {
-        margin-top: 1rem;
-        padding: 10px 20px;
-        font-size: 16px;
-        border-radius: 6px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        cursor: pointer;
-    }
-    </style>
-    </style>
+    <link rel="stylesheet" href="../assets/css/tarif-yemek_sec.css?v=<?= time(); ?>">
 </head>
 
 <body>

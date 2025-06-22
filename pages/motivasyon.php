@@ -35,21 +35,6 @@ $gununOnerisi = $oneriler[array_rand($oneriler)];
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="logo">SağlıklıYaşam</div>
-        <nav>
-            <a href="../index.php">Ana Sayfa</a>
-            <a href="#motivasyon">Motivasyon</a>
-            <?php if (isset($_SESSION['user_id'])): ?>
-                <a href="dashboard.php">Panel</a>
-                <a href="logout.php" class="btn">Çıkış</a>
-            <?php else: ?>
-                <a href="userLogin.php">Giriş</a>
-                <a href="userRegistration.php" class="btn">Kayıt</a>
-            <?php endif; ?>
-        </nav>
-    </header>
-
     <section class="content" id="motivasyon">
         <?php
         $mesajlar = [
@@ -85,10 +70,5 @@ $gununOnerisi = $oneriler[array_rand($oneriler)];
         </div>
         <a href="../index.php">Ana Sayfaya Dön</a>
     </section>
-
-    <footer>
-        <p>&copy; 2025 SağlıklıYaşam Takip</p>
-    </footer>
-
 </body>
 </html>

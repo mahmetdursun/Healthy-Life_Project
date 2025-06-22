@@ -1,0 +1,65 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #e8f5e9, #c8e6c9);
+  padding: 2rem;
+  color: #2e3d27;
+}
+
+h2 {
+  color: #2e7d32;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.mesaj-kutu {
+  background: #ffffff;
+  border-left: 6px solid #4CAF50;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+}
+
+.mesaj-kutu:hover {
+  transform: scale(1.02);
+}
+
+.mesaj-kutu strong {
+  color: #2e7d32;
+  font-size: 1.1rem;
+}
+
+.mesaj-icerik {
+  margin-top: 0.6rem;
+  font-size: 1rem;
+  background-color: #f1f8e9;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  line-height: 1.5;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.03);
+}
+
+.mesaj-tarih {
+  font-size: 0.85rem;
+  color: #4e5e4a;
+  margin-top: 0.6rem;
+  text-align: right;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 0.8rem;
+  background: #4CAF50;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background: #388e3c;
+}

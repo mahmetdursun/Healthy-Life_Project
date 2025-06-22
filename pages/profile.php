@@ -78,6 +78,17 @@ $uyku_query = $connection->prepare("SELECT * FROM uyku_kayitlari WHERE kullanici
 $uyku_query->execute(['id' => $user_id]);
 $uykular = $uyku_query->fetchAll(PDO::FETCH_ASSOC);
 
+// Randevular
+$randevu_query = $connection->prepare("
+    SELECT r.r_id, c.c_adi, c.c_soyadi, c.uzmanlik, r.tarih, r.saat, r.randevu_notu
+    FROM randevular r
+    JOIN calisanlar c ON r.c_id = c.c_id
+    WHERE r.u_id = :id
+    ORDER BY r.tarih DESC
+");
+$randevu_query->execute(['id' => $user_id]);
+$randevular = $randevu_query->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html lang="tr">
@@ -102,6 +113,7 @@ $uykular = $uyku_query->fetchAll(PDO::FETCH_ASSOC);
         <a href="?section=hedef" class="<?= $section === 'hedef' ? 'active' : '' ?>">🎯 Hedefler</a>
         <a href="?section=diyet" class="<?= $section === 'diyet' ? 'active' : '' ?>">🥗 Diyetisyen</a>
         <a href="?section=uyku" class="<?= $section === 'uyku' ? 'active' : '' ?>">😴 Uyku</a>
+        <a href="?section=randevular" class="<?= $section === 'randevular' ? 'active' : '' ?>">📅 Randevularım</a>
     </aside>
 
     <main>
@@ -169,7 +181,7 @@ $uykular = $uyku_query->fetchAll(PDO::FETCH_ASSOC);
             </div>
 
             <div class="ilac-ekle-container">
-                <a href="" class="btn btn-ekle">
+                <a href="ilachatirlatici.php" class="btn btn-ekle">
                     ➕ Yeni İlaç Ekle
                 </a>
             </div>
@@ -195,7 +207,7 @@ $uykular = $uyku_query->fetchAll(PDO::FETCH_ASSOC);
                 </div>
 
                 <div class="egzersiz-ekle">
-                    <a href="profil_egzersiz_ekle.php" class="btn btn-ekle">➕ Egzersiz Ekle</a>
+                    <a href="egzersizplanlayici.php" class="btn btn-ekle">➕ Egzersiz Ekle</a>
                 </div>
             </div>
         </div>
@@ -213,7 +225,7 @@ $uykular = $uyku_query->fetchAll(PDO::FETCH_ASSOC);
                 <?php endforeach; ?>
 
                 <div class="ruh-ekle">
-                    <a href="profil_ruh_ekle.php" class="btn btn-ekle">➕ Ruh Hali Ekle</a>
+                    <a href="ruh_takibi.php" class="btn btn-ekle">➕ Ruh Hali Ekle</a>
                 </div>
             </div>
         </div>
@@ -236,7 +248,7 @@ $uykular = $uyku_query->fetchAll(PDO::FETCH_ASSOC);
                 </div>
 
                 <div class="btn-container">
-                    <a href="kullanici_beslenme.php" class="btn btn-ekle">➕ Beslenme Ekle</a>
+                    <a href="tarif-yemek_sec.php.php" class="btn btn-ekle">➕ Beslenme Ekle</a>
                 </div>
             </div>
         </div>
@@ -295,7 +307,7 @@ $uykular = $uyku_query->fetchAll(PDO::FETCH_ASSOC);
                 <?php endforeach; ?>
             </div>
             <div class="profil-hedef__add">
-                <button class="btn">+ Yeni Hedef Ekle</button>
+                <a class="profil-hedef-btn" href="kisisel_hedefler.php" >+ Yeni Hedef Ekle</a>
             </div>
         </div>
 
@@ -350,9 +362,34 @@ $uykular = $uyku_query->fetchAll(PDO::FETCH_ASSOC);
                 <?php endforeach; ?>
 
                 <div class="profil-uyku__btn">
-                    <button class="btn">+ Yeni Uyku Kaydı</button>
+                    <a class="profil-hedef-btn" href="uykutakip.php">+ Yeni Uyku Kaydı</a>
                 </div>
             </div>
+        </div>
+
+        <?php elseif ($section === 'randevular'): ?>
+        <div class="block">
+            <h2 class="section-title">📅 Randevularım</h2>
+            <?php if (empty($randevular)): ?>
+            <p>Henüz randevunuz bulunmamaktadır.</p>
+            <?php else: ?>
+            <div class="randevu-listesi">
+                <?php foreach ($randevular as $r): ?>
+                <div class="randevu-card">
+                    <strong><?= htmlspecialchars($r['c_adi'] . ' ' . $r['c_soyadi']) ?></strong> -
+                    <?= htmlspecialchars($r['uzmanlik']) ?><br>
+                    📅 <?= $r['tarih'] ?> ⏰ <?= $r['saat'] ?><br>
+                    📝 <?= nl2br(htmlspecialchars($r['randevu_notu'])) ?>
+                </div>
+                <a href="mesaj_gonder.php?randevu_id=<?= $r['r_id'] ?>" class="btn btn-mesaj">✉️ Mesaj Gönder</a>
+                <form action="profil_randevu_sil.php" method="POST" style="display:inline;">
+                    <input type="hidden" name="randevu_id" value="<?= $r['r_id'] ?>">
+                    <button type="submit" class="btn red">Sil</button>
+                </form>
+                <a href="profil_randevu_guncelle.php?id=<?= $r['r_id'] ?>" class="btn">Güncelle</a>
+                <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
         </div>
         <?php endif; ?>
     </main>
