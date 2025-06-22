@@ -1,6 +1,6 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to right, #dff6f0, #c4ebf2);
+  background: linear-gradient(to right, #e8f5e9, #d0f0d4);
   margin: 0;
   padding: 0;
 }
@@ -18,7 +18,7 @@ body {
 
 h2 {
   text-align: center;
-  color: #2c7873;
+  color: #2e7d32;
   margin-bottom: 30px;
   font-size: 26px;
 }
@@ -27,7 +27,7 @@ label {
   display: block;
   margin-top: 20px;
   font-weight: bold;
-  color: #125d56;
+  color: #33691e;
 }
 
 input[type="time"],
@@ -37,15 +37,15 @@ textarea {
   padding: 12px;
   margin-top: 8px;
   border-radius: 8px;
-  border: 1px solid #b6d7d7;
-  background-color: #f0fdfc;
+  border: 1px solid #a5d6a7;
+  background-color: #f1f8e9;
   font-size: 15px;
   transition: border 0.3s ease;
 }
 
 input:focus,
 textarea:focus {
-  border: 2px solid #4ca1af;
+  border: 2px solid #66bb6a;
   outline: none;
 }
 
@@ -53,23 +53,30 @@ textarea {
   resize: vertical;
 }
 
-button {
+/* Tek tip buton ve bağlantı tasarımı */
+button,
+a {
+  display: inline-block;
   margin-top: 25px;
-  background: #2c7873;
-  color: white;
+  background: #388e3c;
+  color: #ffffff;
   border: none;
-  padding: 12px 25px;
-  border-radius: 8px;
-  cursor: pointer;
+  padding: 12px 30px;
+  border-radius: 10px;
   font-size: 16px;
-  transition: background 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-button:hover {
-  background: #205e58;
+button:hover,
+a:hover {
+  background-color: #2e7d32;
+  transform: translateY(-2px);
 }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  to { opacity: 1; transform: translateY(0); }
 }

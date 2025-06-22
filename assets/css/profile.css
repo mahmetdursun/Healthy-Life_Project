@@ -469,7 +469,7 @@
   margin-top: 20px;
 }
 
-.btn {
+.profil-hedef-btn {
   background: #4caf50;
   color: #fff;
   font-weight: 600;
@@ -478,9 +478,10 @@
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.2s ease;
+  text-decoration: none;
 }
 
-.btn:hover {
+.profil-hedef-btn:hover {
   background: #388e3c;
 }
 
@@ -572,8 +573,49 @@
   margin-top: 24px;
 }
 
+.mesaj-kutusu {
+    max-height: 400px;
+    overflow-y: auto;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 6px;
+}
 
+.mesaj {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+    max-width: 70%;
+}
 
+.mesaj.ben {
+    background-color: #d1ffd1;
+    align-self: flex-end;
+}
 
+.mesaj.onlar {
+    background-color: #f1f1f1;
+    align-self: flex-start;
+}
 
+.mesaj-formu {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
 
+.mesaj-formu textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    resize: vertical;
+}
+
+.mesaj-formu button {
+    background-color: #4CAF50;
+    border: none;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+}

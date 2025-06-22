@@ -3,11 +3,11 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(135deg, #7FC782, #A8E6A2);
 }
 
 /* Konteyner kutusu */
@@ -18,23 +18,24 @@ body {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     width: 90%;
     max-width: 400px;
+    animation: fadeIn 0.8s ease;
 }
 
 /* Başlık */
 h2 {
     text-align: center;
-    color: #333;
+    color: #2e7d32;
     margin-bottom: 25px;
 }
 
-/* Form ayarları */
+/* Form */
 form {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-/* Inputlar */
+/* Input */
 input {
     padding: 12px;
     border-radius: 8px;
@@ -54,7 +55,18 @@ button {
     transition: background-color 0.3s ease;
 }
 
-/* Button hover efekti */
 button:hover {
     background-color: #45a049;
+}
+
+/* Basit fade-in efekti */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
