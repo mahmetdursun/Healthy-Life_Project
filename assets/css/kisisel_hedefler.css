@@ -1,6 +1,6 @@
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to right, #e0f7fa, #fff3e0);
+    background: linear-gradient(to right, #e0f7fa, #f1f8e9); /* açık yeşil-mavi */
     margin: 0;
     padding: 30px;
 }
@@ -8,16 +8,16 @@ body {
 .container {
     max-width: 1000px;
     margin: auto;
-    background: white;
+    background: #ffffff;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
 }
 
 h1 {
     text-align: center;
     margin-bottom: 30px;
-    color: #00796b;
+    color: #00695c; /* yeşil-mavi koyu */
 }
 
 .grid-form {
@@ -29,49 +29,70 @@ h1 {
 .input-box {
     display: flex;
     flex-direction: column;
-    background: #f1f8e9;
+    background: #e8f5e9; /* yumuşak yeşil */
     padding: 15px;
     border-radius: 10px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.04);
     transition: transform 0.2s ease;
 }
 
 .input-box:hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
 }
 
 .input-box label {
     margin-bottom: 5px;
     font-weight: bold;
-    color: #388e3c;
+    color: #2e7d32; /* yeşil */
 }
 
 .input-box input,
 .input-box textarea,
 .input-box select {
     padding: 10px;
-    border: 1px solid #c8e6c9;
-    border-radius: 5px;
+    border: 1px solid #a5d6a7;
+    border-radius: 6px;
     resize: vertical;
+    font-size: 15px;
+    background-color: #ffffff;
+    color: #2e3d27;
 }
 
 .full-width {
     grid-column: 1 / -1;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 button {
     padding: 12px 30px;
     background-color: #00796b;
-    color: white;
+    color: #ffffff;
     border: none;
     border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    margin-right: 15px;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
     background-color: #004d40;
+    transform: translateY(-2px);
+}
+
+a {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #388e3c;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+a:hover {
+    background-color: #2e7d32;
+    transform: translateY(-2px);
 }

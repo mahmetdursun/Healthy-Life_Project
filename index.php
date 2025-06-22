@@ -12,21 +12,18 @@ session_start();
 </head>
 
 <body>
-
     <header class="navbar">
-        <div class="logo">SağlıklıYaşam</div>
+        <div class="logo">Sağlıklı Yaşam</div>
         <nav>
-            <a href="#features">Özellikler</a>
-
             <?php if (isset($_SESSION['user_id'])): ?>
-            <!-- Kullanıcı giriş yaptıysa -->
             <a href="pages/profile.php" class="profile-link">
                 👤 <?php echo ucfirst(htmlspecialchars($_SESSION["u_adi"])); ?>
             </a>
             <a href="pages/logout.php" class="btn">Çıkış Yap</a>
             <?php else: ?>
-            <!-- Giriş yapılmadıysa -->
-            <a href="pages/userLogin.php">Giriş Yap</a>
+            <a href="pages/userLogin.php">Kullanıcı Girişi</a>
+            <a href="pages/calisanGiris.php">Çalışan Girişi</a>
+            <a href="pages/adminLogin.php">Admin Girişi</a>
             <a href="pages/userRegistration.php" class="btn">Kayıt Ol</a>
             <?php endif; ?>
         </nav>
@@ -134,8 +131,8 @@ session_start();
     </section>
 
     <section class="fit-tarifler">
-        <a href="pages/tarifler.php">
-            <h2 class="fit-tarifler__baslik">🔥 Fit Tarifler</h2>
+        <a class="fit-tarifler__baslik" href="pages/tarifler.php">
+            <h3>🔥 Fit Tarifler</h3>
             <div class="fit-tarifler__marquee">
                 <div class="fit-tarifler__marquee-content">
                     <?php for ($i = 0; $i < 2; $i++): ?>
@@ -220,6 +217,28 @@ session_start();
                 </div>
             </div>
         </a>
+    </section>
+
+    <section class="randevu-alani">
+        <h2>Randevu Almak İstediğiniz Uzmanı Seçin</h2>
+        <div class="uzman-kartlar">
+            <a href="pages/randevu.php" class="uzman-kart">
+                <img src="assets/images/diyetisyen.jpg" alt="Diyetisyen">
+                <div class="hover-yazi">Diyetisyen ile hemen randevu oluşturabilirsiniz</div>
+            </a>
+            <a href="pages/randevu.php" class="uzman-kart">
+                <img src="assets/images/spor.jpg" alt="Spor Eğitmeni">
+                <div class="hover-yazi">Spor Eğitmeni ile hemen randevu oluşturabilirsiniz</div>
+            </a>
+            <a href="pages/randevu.php" class="uzman-kart">
+                <img src="assets/images/doktor.jpg" alt="Doktor">
+                <div class="hover-yazi">Doktor ile hemen randevu oluşturabilirsiniz</div>
+            </a>
+            <a href="pages/randevu.php" class="uzman-kart">
+                <img src="assets/images/h_kocu.jpg" alt="Hayat Koçu">
+                <div class="hover-yazi">Hayat Koçu ile hemen randevu oluşturabilirsiniz</div>
+            </a>
+        </div>
     </section>
 
     <footer>
